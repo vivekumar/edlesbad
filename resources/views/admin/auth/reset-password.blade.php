@@ -46,7 +46,7 @@
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
                                 <a href="{{url('/')}}" class="d-inline-block auth-logo">
-                                    <img src="{{URL::asset('admin/images/logo.jpg')}}" alt="" height="20">
+                                    <img src="{{URL::asset('images/logo/logo-4.png')}}" alt="" height="100">
                                 </a>
                             </div>
                             <p class="mt-3 fs-15 fw-medium">{{env('SITE_NAME')}} Admin Dashboard</p>
@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="p-2">
-                                   @if (session('msg'))
+                                    @if (session('msg'))
                                     <div class="alert alert-danger" role="alert">
                                         {{ session('msg') }}
                                     </div>
@@ -79,9 +79,9 @@
                                             <div class="position-relative auth-pass-inputgroup">
                                                 <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" name="password">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                                            @error('password')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                @error('password')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
                                             <div id="passwordInput" class="form-text">Must be at least 6 characters.</div>
                                         </div>

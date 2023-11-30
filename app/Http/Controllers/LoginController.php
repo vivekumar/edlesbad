@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     function login()
     {
-        return view('backend.login.login');
+        return view('frontend.login');
     }
     public function authenticate(Request $request): RedirectResponse
     {

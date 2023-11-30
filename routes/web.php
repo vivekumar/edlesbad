@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\LoginController;
+use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\HomeController;
 /*
@@ -19,6 +19,8 @@ Route::get('/', function () {
     // return view('welcome');
     return view('frontend.index');
 });
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/dashbaord', [HomeController::class, 'dashbaord'])->name('dashbaord');
 Route::get('/admin', [HomeController::class, 'index'])->name('home');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog-details', [HomeController::class, 'blogDetail'])->name('blogDetail');

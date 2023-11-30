@@ -42,4 +42,8 @@ class HomeController extends Controller
     {
         return view('frontend.unsere-lieferanten');
     }
+    function dashbaord()
+    {
+        return view('frontend.user-dashboard');
+    }
 }

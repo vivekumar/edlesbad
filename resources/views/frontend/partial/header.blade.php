@@ -52,12 +52,15 @@
                             <div class="col-auto">
                                 <div class="header-right-wrapper">
                                     <ul class="header-right-text d-flex flex-column flex-md-row justify-content-center">
-                                        <li class="mr-4"><a class="text-white" href="{{'/'}}">Home</a></li>
-                                        <li><a class="text-white" href="blog">Blog</a></li>
-                                        <!-- <li><div class="htc__shopping__cart mt-md-0 mt-2">
-                                    <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                    <a href="#"><span class="htc__qua">2</span></a>
-                                </div></li> -->
+                                        <li class="mr-2"><a class="text-white" href="{{'/'}}">Home</a></li>
+                                        <li class="mr-2"><a href="{{url('blog')}}" class="text-white" href="blog">Blog</a></li>
+                                        <li class="mr-2"><a href="{{url('login')}}" class="text-white" href="blog">{{_('Login')}}</a></li>
+                                        <li>
+                                            <div class="htc__shopping__cart mt-md-0 mt-2 ml-2">
+                                                <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
+                                                <a href="#"><span class="htc__qua">2</span></a>
+                                            </div>
+                                        </li>
                                     </ul>
 
                                 </div>

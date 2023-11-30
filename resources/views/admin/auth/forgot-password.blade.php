@@ -46,7 +46,7 @@
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
                                 <a href="index.html" class="d-inline-block auth-logo">
-                                <img src="{{URL::asset('admin/images/logo.jpg')}}" alt="" height="20">
+                                    <img src="{{URL::asset('images/logo/logo-4.png')}}" alt="" height="100">
                                 </a>
                             </div>
                             <p class="mt-3 fs-15 fw-medium">{{env('SITE_NAME')}} Admin Dashboard</p>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="p-2">
 
-                                   @if (session('msg'))
+                                    @if (session('msg'))
                                     <div class="alert alert-danger" role="alert">
                                         {{ session('msg') }}
                                     </div>
