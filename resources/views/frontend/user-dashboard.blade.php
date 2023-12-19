@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="bradcaump__inner">
                         <nav class="bradcaump-inner">
-                            <a class="breadcrumb-item" href="index.php">Home</a>
+                            <a class="breadcrumb-item" href="{{url('/')}}">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                             <span class="breadcrumb-item active">Produkte</span>
                         </nav>
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="settings-tab" data-bs-toggle="tab" href="#settings">
+                        <a class="nav-link" id="settings-tab" data-bs-toggle="tab" href="{{url('logout')}}">
                             <i class="fa fa-cog"></i> Logout
                         </a>
                     </li>

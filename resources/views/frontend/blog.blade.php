@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="bradcaump__inner">
                         <nav class="bradcaump-inner">
-                            <a class="breadcrumb-item" href="index.html">Home</a>
+                            <a class="breadcrumb-item" href="{{url('/')}}">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                             <span class="breadcrumb-item active">Blog</span>
                         </nav>
@@ -26,134 +26,33 @@
     <div class="container">
         <div class="ht__blog__wrap blog--page row">
             <!-- Start Single Blog -->
+            @foreach($blogs as $blog)
             <div class="col-xl-4 col-lg-6">
                 <div class="blog">
                     <div class="blog__thumb">
-                        <a href="blog-details">
+                        <a href="{{ url('/') }}/blog/{{$blog->slug}}">
+                            @if($blog->short_desc)
+                            <img src="{{ URL::asset($blog->image ) }}" alt="blog images">
+                            @else
                             <img src="images/blog/blog-img/1.jpg" alt="blog images">
+                            @endif
                         </a>
                     </div>
                     <div class="blog__details">
                         <div class="bl__date">
                             <span>March 22, 2023</span>
                         </div>
-                        <h2><a href="blog-details">Waschküche: Hilfreiche Tipps für die Einrichtung</a></h2>
-                        <p>A laundry room is a room in a single-family home or apartment building in which there are one or more washing machines.</p>
+                        <h2><a href="{{ url('/') }}/blog/{{$blog->slug}}">{{$blog->title}}</a></h2>
+                        <p>{{$blog->short_desc}}</p>
                         <div class="blog__btn">
-                            <a href="blog-details">Mehr</a>
+                            <a href="{{ url('/') }}/blog/{{$blog->slug}}">Mehr</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End Single Blog -->
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-lg-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="blog-details">
-                            <img src="images/blog/blog-img/2.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <div class="bl__date">
-                            <span>May 22, 2023</span>
-                        </div>
-                        <h2><a href="blog-details">Which mirror cabinet suits my bathroom best?</a></h2>
-                        <p>There is hardly a bathroom that does not have a mirror cabinet - and there are good reasons for that.</p>
-                        <div class="blog__btn">
-                            <a href="blog-details">Mehr</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Blog -->
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-lg-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="blog-details">
-                            <img src="images/blog/blog-img/3.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <div class="bl__date">
-                            <span>March 22, 2023</span>
-                        </div>
-                        <h2><a href="blog-details">How to choose the right
-                                washbasin</a></h2>
-                        <p>The demands on bathroom design have changed. While functional aspects were once the focus, toda</p>
-                        <div class="blog__btn">
-                            <a href="blog-details">Mehr</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <!-- End Single Blog -->
 
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-lg-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="blog-details">
-                            <img src="images/blog/blog-img/1.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <div class="bl__date">
-                            <span>March 22, 2023</span>
-                        </div>
-                        <h2><a href="blog-details">Waschküche: Hilfreiche Tipps für die Einrichtung</a></h2>
-                        <p>A laundry room is a room in a single-family home or apartment building in which there are one or more washing machines.</p>
-                        <div class="blog__btn">
-                            <a href="blog-details">Mehr</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Blog -->
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-lg-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="blog-details">
-                            <img src="images/blog/blog-img/2.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <div class="bl__date">
-                            <span>May 22, 2023</span>
-                        </div>
-                        <h2><a href="blog-details">Which mirror cabinet suits my bathroom best?</a></h2>
-                        <p>There is hardly a bathroom that does not have a mirror cabinet - and there are good reasons for that.</p>
-                        <div class="blog__btn">
-                            <a href="blog-details">Mehr</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Blog -->
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-lg-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="blog-details">
-                            <img src="images/blog/blog-img/3.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <div class="bl__date">
-                            <span>March 22, 2023</span>
-                        </div>
-                        <h2><a href="blog-details">How to choose the right
-                                washbasin</a></h2>
-                        <p>The demands on bathroom design have changed. While functional aspects were once the focus, toda</p>
-                        <div class="blog__btn">
-                            <a href="blog-details">Mehr</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Blog -->
 
 
 
@@ -161,7 +60,8 @@
         <!-- Start PAgenation -->
         <div class="row">
             <div class="col-lg-12">
-                <ul class="htc__pagenation">
+                {{ $blogs->onEachSide(5)->links() }}
+                {{--<ul class="htc__pagenation">
                     <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
                     <li><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
@@ -170,7 +70,7 @@
                     <li><a href="#"><i class="zmdi zmdi-more"></i></a></li>
                     <li><a href="#">19</a></li>
                     <li class="active"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                </ul>
+                </ul>--}}
             </div>
         </div>
         <!-- End PAgenation -->

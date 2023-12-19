@@ -43,10 +43,11 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th scope="col">S.No</th>
-                                                <th scope="col">Category</th>
+                                                <th scope="col">Image</th>
                                                 <th scope="col">Title</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Renewal Price</th>
+                                                <th scope="col">Category</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -55,10 +56,11 @@
                                             @forelse($products as $key=>$row)
                                             <tr row_id="{{$row->id}}" class="get_row_{{$row->id}}">
                                                 <td>{{$key+1+($products->currentPage()-1) * ($products->perPage())}}</td>
-                                                <td>{{$row->category->title ?? ''}}</td>
+                                                <td>@if($row->image)<img src="{{$row->image}}" height="50" width="auto" style="max-width:100px">@endif</td>
                                                 <td>{{$row->title ?? ''}}</td>
                                                 <td>{{$row->price ?? ''}}</td>
                                                 <td>{{$row->renewal_price ?? ''}}</td>
+                                                <td>{{$row->category->title ?? ''}}</td>
                                                 <td>
                                                     <a class="btn btn-info btn-sm waves-effect waves-light" href="{{url('admin/product/edit/'.$row->id)}}">
                                                         <i class="fe fe-pencil"></i> Edit
@@ -70,7 +72,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                               <td colspan="4">Data not found</td> 
+                                                <td colspan="4">Data not found</td>
                                             </tr>
                                             @endif
 
@@ -121,7 +123,7 @@
             var row_id = $('.get_row_id').val();
             //alert(row_id);
             var csrf_token = $('input[name="csrf_token"]').val();
-            var getUrl = window.location.href+'/delete/' + row_id;
+            var getUrl = window.location.href + '/delete/' + row_id;
             $.ajax({
                 url: getUrl,
                 method: "get",

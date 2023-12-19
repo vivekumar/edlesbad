@@ -117,7 +117,7 @@
 
 
 
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link menu-link" href="#bookingData" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="bookingData">
                         <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-authentication">Manage Orders</span>
                     </a>
@@ -145,7 +145,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
 
 
 
@@ -191,7 +191,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link menu-link" href="#faqData" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="faqData">
                         <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-authentication">Manage Faq</span>
                     </a>
@@ -245,7 +245,7 @@
                     <a class="nav-link menu-link" href="{{url('admin/subscriber')}}">
                         <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-widgets">Manage Subscribers</span>
                     </a>
-                </li>
+                </li>-->
 
 
 

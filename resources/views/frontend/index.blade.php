@@ -6,32 +6,21 @@
 
         <!-- Carousel Indicators    -->
         <ol class="carousel-indicators">
-            <li data-target="#magicCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#magicCarousel" data-slide-to="1"></li>
-            <li data-target="#magicCarousel" data-slide-to="2"></li>
-            <li data-target="#magicCarousel" data-slide-to="3"></li>
+            @foreach($top_banner as $key=>$banner)
+            <li data-target="#magicCarousel" data-slide-to="{{$key}}" @if($key==0) class="active" @endif></li>
+            @endforeach
+
         </ol>
 
         <!-- Carousel Slider    -->
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img src="images/banner/1.jpg" class="d-block w-100">
-                <!-- <div class="carousel-caption">
-                    <h3>Slide 01</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At placeat dolore obcaecati perspiciatis neque in, iusto, quia aut molestias minus ipsam modi dolorem odit eos.</p>
-                  </div>  -->
-            </div>
 
-            <div class="carousel-item">
-                <img src="images/banner/4.jpg" class="d-block w-100">
+            @foreach($top_banner as $key=>$banner)
+            <div class="carousel-item @if($key==0) active @endif ">
+                <img src="{{ URL::asset($banner->image ) }}" class="d-block w-100">
             </div>
-            <div class="carousel-item">
-                <img src="images/banner/2.jpg" class="d-block w-100">
-            </div>
+            @endforeach
 
-            <div class="carousel-item">
-                <img src="images/banner/3.jpg" class="d-block w-100">
-            </div>
 
             <!--     Carousel Controls     -->
             <a href="#magicCarousel" class="carousel-control-prev" role="button" data-slide="prev">
@@ -500,59 +489,30 @@
         </div>
         <div class="ht__blog__wrap row">
             <!-- Start Single Blog -->
+            @foreach($blogs as $blog)
             <div class="col-xl-4 col-md-6">
                 <div class="blog">
                     <div class="blog__thumb">
-                        <a href="#">
+                        <a href="{{ url('/') }}/blog/{{$blog->slug}}">
+                            @if($blog->short_desc)
+                            <img src="{{ URL::asset($blog->image ) }}" alt="blog images">
+                            @else
                             <img src="images/blog/blog-img/1.jpg" alt="blog images">
+                            @endif
                         </a>
                     </div>
                     <div class="blog__details">
-                        <h2><a href="#">Waschküche: Hilfreiche Tipps für die Einrichtung</a></h2>
-                        <p>A laundry room is a room in a single-family home or apartment building in which there are one or more washing machines.</p>
+                        <h2><a href="{{ url('/') }}/blog/{{$blog->slug}}">{{$blog->title}}</a></h2>
+                        <p>{{$blog->short_desc}}</p>
                         <div class="blog__btn">
-                            <a href="#">Read More</a>
+                            <a href="{{ url('/') }}/blog/{{$blog->slug}}">Mehr</a>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- End Single Blog -->
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-md-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="#">
-                            <img src="images/blog/blog-img/2.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <h2><a href="#">Which mirror cabinet suits my bathroom best?</a></h2>
-                        <p>There is hardly a bathroom that does not have a mirror cabinet - and there are good reasons for that.</p>
-                        <div class="blog__btn">
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Blog -->
-            <!-- Start Single Blog -->
-            <div class="col-xl-4 col-md-6">
-                <div class="blog">
-                    <div class="blog__thumb">
-                        <a href="#">
-                            <img src="images/blog/blog-img/3.jpg" alt="blog images">
-                        </a>
-                    </div>
-                    <div class="blog__details">
-                        <h2><a href="#">How to choose the right <br> washbasin</a></h2>
-                        <p>The demands on bathroom design have changed. While functional aspects were once the focus, today</p>
-                        <div class="blog__btn">
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Blog -->
+
         </div>
     </div>
 </section>

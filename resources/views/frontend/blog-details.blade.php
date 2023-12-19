@@ -3,14 +3,14 @@
 @section('container')
 
 <!-- Start Bradcaump area -->
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{URL::asset('images/bg/4.jpg')}}) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner">
                         <nav class="bradcaump-inner">
-                            <a class="breadcrumb-item" href="index.html">Home</a>
+                            <a class="breadcrumb-item" href="{{url('/')}}">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                             <span class="breadcrumb-item active">Blog Details</span>
                         </nav>
@@ -28,20 +28,19 @@
             <div class="col-lg-12">
                 <div class="htc__blog__details__wrap">
                     <div class="ht__bl__thumb">
-                        <img src="images/banner/aussendusche.jpg" alt="blog images">
+                        @if($blog->short_desc)
+                        <img src="{{ URL::asset($blog->image) }}" alt="blog images">
+                        @else
+                        <img src="{{ URL::asset('images/banner/aussendusche.jpg') }}" alt="blog images">
+                        @endif
+
                     </div>
                     <div class="bl__dtl">
-                        <h2>Das sind die Vorteile einer Aussendusche</h2>
+                        <h2>{{$blog->title}}</h2>
 
-                        <p>Sie geniessen einen sonnigen Tag im Garten und Ihnen steht der Sinn nach Abkühlung. Statt ins Haus zu gehen und dort das Badezimmer aufzusuchen, können Sie sich gleich draussen abduschen. Möglich macht dies eine Aussendusche. Im Folgenden erfahren Sie, welche Vorteile sie hat und welche Modelle Sie bei Edles Bad erhalten.</p>
-                        <h1 class="mt-3 mb-3">Was ist überhaupt eine Aussendusche?</h1>
-                        <img src="images/product/09_aussendusche-500-6910_flow-wall.jpg" width="100%" style="max-width:420px" class="img-thumbnail" alt="blog images">
-
-
-                        <p class="mt-3">Eine Aussendusche ist eine Dusche, die sich im Freien befindet. Sie kann auf der Rasenfläche im Garten installiert sein, sich aber auch auf einem anderen Untergrund befinden. Wasser bezieht sie üblicherweise über den Hausanschluss. Ist dies der Fall, dann kann sowohl auf kaltes als auch auf warmes Wasser zugegriffen werden.</p>
-
+                        {!!$blog->descriptions!!}
                         <!-- Start Comment Area -->
-                        <div class="htc__comment__area">
+                        {{--<div class="htc__comment__area">
                             <h4 class="title__line--5">HAVE 2 COMMENTS</h4>
                             <div class="ht__comment__content">
                                 <!-- Start Single Comment -->
@@ -114,7 +113,7 @@
                             <div class="ht__comment__btn--2 mt--30">
                                 <a class="fr__btn" href="#">Send</a>
                             </div>
-                        </div>
+                        </div>--}}
                         <!-- End comment Form -->
 
                     </div>

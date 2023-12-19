@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        $data['categories'] = Category::orderBy('id', 'desc')->get();
+        $data['categories'] = Category::where('parent_id', null)->orderby('id', 'desc')->get();
         return view('admin.product.product-form')->with($data);
     }
 

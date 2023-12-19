@@ -42,15 +42,24 @@
                                     @csrf
                                     <div class="row gy-4">
 
-                                    <div class="col-xxl-4 col-md-4">
+                                        <div class="col-xxl-4 col-md-4">
                                             <div>
-                                                <label for="name" class="form-label">Category</label>
-                                                <select name="category_id" class="form-control">
-                                                    <option value="" @if(isset($product) && $product->category_id == '') {{"selected"}} @endif>--Select--</option>
-                                                    @foreach($categories as $category)
-                                                    <option value="{{$category->id}}" @if(isset($product) && $product->category_id == $category->id) {{"selected"}} @endif >{{$category->title}}</option>
-                                                    @endforeach
-                                                </select>
+                                                <div class="form-group">
+                                                    <label>Select parent category*</label>
+                                                    <select type="text" name="category_id" class="form-control">
+                                                        <option value="">None</option>
+                                                        @if($categories)
+                                                        @foreach($categories as $category1)
+
+                                                        <?php $dash = ''; ?>
+                                                        <option value="{{$category1->id}}">{{$category1->title}}</option>
+                                                        @if(count($category1->subcategory))
+                                                        @include('admin.category.subCategoryList-option',['subcategories' => $category1->subcategory])
+                                                        @endif
+                                                        @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
 
                                                 @error('category_id')
                                                 <span class="text-danger">{{$message}}</span>
