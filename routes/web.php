@@ -47,3 +47,5 @@ Route::middleware([CheckUserLog::class])->group(function () {
     Route::get('user-verify', [UserController::class, 'userVerify']);
     Route::get('logout', [UserController::class, 'logout']);
 });
+
+Route::get('/{slug}', [HomeController::class, 'category'])->name('category1');

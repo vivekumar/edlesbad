@@ -87,7 +87,24 @@
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
-
+                                        <div class="col-xxl-12 col-md-12">
+                                            <div>
+                                                <label for="descriptions" class="form-label">Short Description</label>
+                                                <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                            </div>
+                                            @error('description')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xxl-12 col-md-12">
+                                            <div>
+                                                <label for="descriptions" class="form-label">Description</label>
+                                                <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                            </div>
+                                            @error('description')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
                                         <div class="col-xxl-4 col-md-4">
                                             <div>
                                                 <label for="gallery_image" class="form-label">Product Image</label>
@@ -158,7 +175,9 @@
 
 </div>
 <!-- END layout-wrapper -->
-
+<script>
+    CKEDITOR.replace('descriptions');
+</script>
 
 
 @stop

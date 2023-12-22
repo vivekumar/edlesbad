@@ -39,16 +39,20 @@ class HomeController extends Controller
     function inspiration()
     {
         return view('frontend.inspiration');
+        //return view('frontend.produkte');
     }
-    function kategorien()
-    {
-        return view('frontend.kategorien');
-    }
+
     function product(Request $request)
     {
+        $data['categories'] = Category::where(['status' => 1, 'parent_id' => null])->orderby('title', 'asc')->get();
+        return view('frontend.kategorien')->with($data);
+    }
+    function category(Request $request, $slug)
+    {
+        $cat_id = Category::where(['status' => 1, 'slug' => $slug])->value('id');
+        $data['categories'] = Category::where(['status' => 1, 'parent_id' => $cat_id])->orderby('title', 'asc')->get();
 
-        $data['products'] = Product::where(['status' => 1])->get();
-        return view('frontend.produkte')->with($data);
+        return view('frontend.kategorien')->with($data);
     }
     function productDetals(Request $request, $slug)
     {

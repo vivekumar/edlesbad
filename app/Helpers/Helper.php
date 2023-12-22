@@ -8,7 +8,7 @@ use App\Models\Admin;
 use App\Models\Cart;
 use App\Models\PageSection;
 use App\Models\Page;
-use App\Models\HotelRoomImage;
+use App\Models\Category;
 use App\Models\Setting;
 use App\Models\Menu;
 use App\Models\Banner;
@@ -57,26 +57,26 @@ class Helper
   public static function getPageData($id)
   {
     $page = Page::where(['id' => $id, 'status' => 1])->first();
-     return $page;
+    return $page;
   }
 
   public static function getPageSectionData($id)
   {
     $page = PageSection::where(['id' => $id, 'status' => 1])->first();
-     return $page;
+    return $page;
   }
 
 
   public static function getBlogData()
   {
-     $blogs = Blog::where(['status' => 1])->orderBy('id','desc')->take(3)->get();
-     return $blogs;
+    $blogs = Blog::where(['status' => 1])->orderBy('id', 'desc')->take(3)->get();
+    return $blogs;
   }
 
   public static function getFooterMenu()
   {
-     $menus = Menu::where(['status' => 1,'type'=>'footer'])->orderBy('sort_order','desc')->get();
-     return $menus;
+    $menus = Menu::where(['status' => 1, 'type' => 'footer'])->orderBy('sort_order', 'desc')->get();
+    return $menus;
   }
 
 
@@ -85,21 +85,24 @@ class Helper
     return Cart::where(['user_id' => $user_id])->count();
   }
 
-  
-  public function getMenu()
-   {
-       $menu = new Menu;
-       $menuList = $menu->tree();
-       return $menuList;
-   }
 
-   public static function cleanString($string) {
+  public function getMenu()
+  {
+    $menu = new Menu;
+    $menuList = $menu->tree();
+    return $menuList;
+  }
+
+  public static function cleanString($string)
+  {
     $string = str_replace(' ', '_', $string); // Replaces all spaces with hyphens.
-    return str_replace( array( '\'', '"', ',' , ';', '<', '>', '(', ')' ), ' ', $string);
+    return str_replace(array('\'', '"', ',', ';', '<', '>', '(', ')'), ' ', $string);
     ///return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes
     ///return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
- }
+  }
 
-
-
+  public static function getCategory()
+  {
+    return Category::where(['status' => 1, 'parent_id' => null])->orderby('title', 'asc')->get();
+  }
 }
