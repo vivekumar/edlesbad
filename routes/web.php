@@ -48,4 +48,5 @@ Route::middleware([CheckUserLog::class])->group(function () {
     Route::get('logout', [UserController::class, 'logout']);
 });
 
-Route::get('/{slug}', [HomeController::class, 'category'])->name('category1');
+//Route::get('/{slug}', [HomeController::class, 'category'])->name('category1');
+Route::get('/{category}', [HomeController::class, 'category'])->name('category.show')->where('category', '.*');

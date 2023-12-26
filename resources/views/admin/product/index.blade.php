@@ -46,7 +46,7 @@
                                                 <th scope="col">Image</th>
                                                 <th scope="col">Title</th>
                                                 <th scope="col">Price</th>
-                                                <th scope="col">Renewal Price</th>
+                                                <th scope="col">Sell Price</th>
                                                 <th scope="col">Category</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -56,18 +56,26 @@
                                             @forelse($products as $key=>$row)
                                             <tr row_id="{{$row->id}}" class="get_row_{{$row->id}}">
                                                 <td>{{$key+1+($products->currentPage()-1) * ($products->perPage())}}</td>
-                                                <td>@if($row->image)<img src="{{$row->image}}" height="50" width="auto" style="max-width:100px">@endif</td>
+                                                <td>@if($row->thumbnail)<img src="{{url('storage/products/'.$row->thumbnail)}}" height="50" width="auto" style="max-width:100px">@endif</td>
                                                 <td>{{$row->title ?? ''}}</td>
                                                 <td>{{$row->price ?? ''}}</td>
-                                                <td>{{$row->renewal_price ?? ''}}</td>
+                                                <td>{{$row->sell_price ?? ''}}</td>
                                                 <td>{{$row->category->title ?? ''}}</td>
                                                 <td>
-                                                    <a class="btn btn-info btn-sm waves-effect waves-light" href="{{url('admin/product/edit/'.$row->id)}}">
-                                                        <i class="fe fe-pencil"></i> Edit
-                                                    </a>
-                                                    <a class="btn btn-danger btn-sm waves-effect waves-light deleteBtn" data-toggle="modal" href="javascript:void(0)" row_id="{{$row->id}}">
-                                                        <i class="fe fe-trash"></i> Delete
-                                                    </a>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-info waves-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Action
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="{{url('admin/product/edit/'.$row->id)}}">Edit</a></li>
+                                                            <li><a class="dropdown-item" href="#">Add image</a></li>
+                                                            <li><a class="dropdown-item" href="#">Add pdf</a></li>
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+                                                            <li><a class="dropdown-item waves-effect waves-light deleteBtn" data-toggle="modal" href="javascript:void(0)" row_id="{{$row->id}}">Delete</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @empty

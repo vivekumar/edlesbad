@@ -1,4 +1,3 @@
-
 /*# sourceMappingURL=custom.min.css.map */
 
 .hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
@@ -7,4 +6,8 @@
 
 .flex.justify-between.flex-1.sm\:hidden {
     display: none !important;
+}
+
+.form-group {
+    margin-bottom: 15px;
 }

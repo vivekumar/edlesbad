@@ -62,9 +62,9 @@
                         <nav class="main__menu__nav">
                             <ul class="main__menu">
                                 <!-- <li><a href="#">Home</a></li> -->
-                                <li><a href="produkte">Produkte</a></li>
+                                <li><a href="/produkte">Produkte</a></li>
 
-                                <li class="drop"><a href="inspiration">Inspirationen</a>
+                                <li class="drop"><a href="/inspiration">Inspirationen</a>
                                     <ul class="dropdown">
                                         <li><a href="inspiration">Badmöbel von FALPER</a></li>
                                         <li><a href="inspiration">Badmöbel Flow by ARCA</a></li>

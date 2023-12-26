@@ -289,7 +289,7 @@
                                                         </div>
                                                     </div>
 
-                                                    
+
 
                                                     <div class="col-lg-12">
                                                         <div class="mb-3">
@@ -434,7 +434,7 @@
 
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductGallery;
 use App\Models\Category;
 use App\Helpers\Helper;
+use Illuminate\Support\Str;
 use Exception;
 use File;
 
@@ -32,7 +33,7 @@ class ProductController extends Controller
             'category_id' => 'required|max:255',
             'title' => 'required|max:255',
             'price' => 'required|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'status' => 'required'
         ]);
 
@@ -46,37 +47,42 @@ class ProductController extends Controller
         try {
             $product->category_id = $request->category_id;
             $product->title = $request->title;
+            $product->slug = Str::slug($request->title, '-');
             $product->price = $request->price;
+            $product->sell_price = $request->sell_price;
+            $product->description = $request->description;
+            $product->content = $request->content;
+            $product->sku = $request->sku;
             $product->status = $request->status;
+
+
+            if ($request->hasFile('thumbnail')) {
+                $file_path = public_path('storage/products/');
+
+                (!file_exists($file_path)) && mkdir($file_path, 0777, true);
+                $name = $request->thumbnail->getClientOriginalName();
+                $filename =  date('ymdgis') .  Helper::cleanString($name);
+                $request->thumbnail->move($file_path, $filename);
+                $product->thumbnail = $filename;
+            }
+            //dd($product);
             $product->save();
 
+            // if ($request->hasFile('images')) {
+            //     foreach ($request->file('images') as $image) {
+            //         $file_path = public_path('storage/products/');
+            //         (!file_exists($file_path)) && mkdir($file_path, 0777, true);
 
-            //     $file_path = public_path('storage/products/');
-            //   (!file_exists($file_path)) && mkdir($file_path, 0777, true);
-            //     if ($request->hasFile('image')) {
-            //         $name = $request->image->getClientOriginalName();
+            //         $name = $image->getClientOriginalName();
             //         $filename =  date('ymdgis') .  Helper::cleanString($name);
-            //         $request->image->move($file_path , $filename);
+            //         $image->move($file_path, $filename);
+
+            //         $gallery = new ProductGallery();
+            //         $gallery->product_id = $product->id;
+            //         $gallery->image = '/storage/products/' . $filename;
+            //         $gallery->save();
             //     }
-
-
-
-
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $image) {
-                    $file_path = public_path('storage/products/');
-                    (!file_exists($file_path)) && mkdir($file_path, 0777, true);
-
-                    $name = $image->getClientOriginalName();
-                    $filename =  date('ymdgis') .  Helper::cleanString($name);
-                    $image->move($file_path, $filename);
-
-                    $gallery = new ProductGallery();
-                    $gallery->product_id = $product->id;
-                    $gallery->image = '/storage/products/' . $filename;
-                    $gallery->save();
-                }
-            }
+            // }
 
 
 

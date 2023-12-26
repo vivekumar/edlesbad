@@ -53,7 +53,10 @@
                  <div class="dropdown ms-sm-3 header-item topbar-user">
                      <button type="button" class="btn shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <span class="d-flex align-items-center">
-                             <img class="rounded-circle header-profile-user" id="img_profile_prv" src="{{URL::asset('uploads/admin/'.Auth::guard('admin')->user()->image?Auth::guard('admin')->user()->image:'profile.jpg')}}" alt="Admin">
+                             @php
+                             $admin_logo=Auth::guard('admin')->user()->image?Auth::guard('admin')->user()->image:'profile.jpg';
+                             @endphp
+                             <img class="rounded-circle header-profile-user" id="img_profile_prv" src="{{URL::asset('/uploads/admin/'.$admin_logo)}}" alt="Admin">
                              <span class="text-start ms-xl-2">
                                  <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{Auth::guard('admin')->user()->name}}</span>
                                  <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Administrator</span>

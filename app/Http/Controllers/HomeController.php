@@ -39,7 +39,6 @@ class HomeController extends Controller
     function inspiration()
     {
         return view('frontend.inspiration');
-        //return view('frontend.produkte');
     }
 
     function product(Request $request)
@@ -49,10 +48,29 @@ class HomeController extends Controller
     }
     function category(Request $request, $slug)
     {
-        $cat_id = Category::where(['status' => 1, 'slug' => $slug])->value('id');
-        $data['categories'] = Category::where(['status' => 1, 'parent_id' => $cat_id])->orderby('title', 'asc')->get();
 
-        return view('frontend.kategorien')->with($data);
+        $categorySlugs = explode('/', $slug);
+
+        $category = Category::where('slug', array_shift($categorySlugs))->whereNull('parent_id')->first();
+        //dd($category);
+        foreach ($categorySlugs as $slug) {
+            $category = $category->childs()->where('slug', $slug)->first();
+            if (!$category) {
+                // Handle invalid category or show a 404 page
+                abort(404);
+            }
+        }
+
+
+
+        $data['categories'] = Category::where(['status' => 1, 'slug' => $slug])->with('subcategory')->first();
+
+        if (count($data['categories']->subcategory) > 0) {
+            return view('frontend.subcategory')->with($data);
+        } else {
+            $products = Product::where(['status' => 1, 'category_id' => $data['categories']->id])->paginate(15);
+            return view('frontend.produkte', compact('products'));
+        }
     }
     function productDetals(Request $request, $slug)
     {

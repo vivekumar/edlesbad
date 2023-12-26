@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{URL::asset('admin/images/logo.png')}}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Layout config Js -->
     <script src="{{URL::asset('admin/js/layout.js')}}"></script>
     <!-- Bootstrap Css -->

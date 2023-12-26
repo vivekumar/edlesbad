@@ -8,18 +8,22 @@
             $categories=App\Helpers\Helper::getCategory();
 
             $current_uri = request()->segments();
-            print_r($current_uri);
+            /*$selected_url=[]; $url_array=[];
+            foreach($current_uri as $loop_url){
+            $selected_url[]=$loop_url;
+            $url_array[]=implode("/",$selected_url);
+            }*/
+            //print_r($url_array);
             @endphp
 
             @if($categories)
             @foreach($categories as $category1)
-            <?php $slug = $category1->slug; ?>
-            <li>
-                <a href="{{$slug}}">{{$category1->title}}</a>
+            <?php $slug = $category1->slug;
+            $slug2 = $category1->slug; ?>
+            <li class="{{ in_array($slug, $current_uri) ? 'active' : '' }}">
+                <a href="{{url($slug)}}">{{$category1->title}}</a>
                 @if(count($category1->subcategory))
-
                 @include('frontend.partial.subCategoryList-option',['subcategories' => $category1->subcategory])
-
                 @endif
                 @endforeach
                 @endif
@@ -106,12 +110,12 @@
             <!-- Start Single Product -->
             <div class="htc__best__product">
                 <div class="htc__best__pro__thumb">
-                    <a href="produkte-details.php">
+                    <a href="produkte-details">
                         <img src="images/product/3.jpg" width="90" alt="small product">
                     </a>
                 </div>
                 <div class="htc__best__product__details">
-                    <h2><a href="produkte-details.php">Largest Water Pot</a></h2>
+                    <h2><a href="produkte-details">Largest Water Pot</a></h2>
 
                     <ul class="pro__prize">
                         <li class="old__prize">$82.5</li>

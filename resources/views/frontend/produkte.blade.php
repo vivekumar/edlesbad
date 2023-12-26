@@ -1,7 +1,7 @@
 @extends('frontend/layout/layout')
 @section('page_title', 'Admin Dashboard')
 @section('container')
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/images/bg/4.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -22,170 +22,13 @@
 <section class="htc__product__grid bg__white ptb--100">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-3 smt-40 xmt-40 order-lg-1 order-2">
-                <div class="htc__product__leftsidebar">
+                @include('frontend.partial.sidebar')
 
-                    <!-- Start Category Area -->
-                    <div class="htc__category">
-
-                        <ul class="cato-list">
-                            <li>
-                                <a href="#" onclick="toggleSubmenu('gallery')">Kunst im Bad
-                                </a>
-                                <ul id="gallery" class="submenu">
-                                    <li>
-                                        <a href="#" onclick="toggleSubmenu('old')">Keramik-Kunst von DOMIZIANI</a>
-                                        <ul id="old" class="submenu">
-                                            <li><a onclick="changeColor(this)" href="#">Aufsatzbecken Keramik</a></li>
-                                            <li><a onclick="changeColor(this)" href="#">Keramik-Kunst Designspiegel</a></li>
-                                            <li><a onclick="changeColor(this)" href="#">Vintage Design-Badmöbel</a></li>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        </li>
-                        <li>
-                            <a href="#" onclick="toggleSubmenu('Baden')">Baden</a>
-                            <ul id="Baden" class="submenu">
-                                <li>
-                                    <a href="#" onclick="toggleSubmenu('Badewannen')">Badewannen freistehend</a>
-                                    <ul id="Badewannen" class="submenu">
-                                        <li><a onclick="changeColor(this)" href="#">Wannen freistehend matt</a></li>
-                                        <li><a onclick="changeColor(this)" href="#">Luxus Badewannen von Mastella</a></li>
-                                        <li><a onclick="changeColor(this)" href="#">Wannen freistehend Glanz</a></li>
-                                        <li><a onclick="changeColor(this)" href="#">Badewanne aus Sanitäracryl</a></li>
-                                        <li><a onclick="changeColor(this)" href="#">Restpostenwannen</a></li>
-                                        <li><a onclick="changeColor(this)" href="#">Zubehör zu freistehende Wannen</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a onclick="changeColor(this)" href="#">Wannenmischer vom Boden</a>
-                                </li>
-                                <li>
-                                    <a onclick="changeColor(this)" href="#">Badewanne mit Tür</a>
-                                </li>
-
-                                <li>
-                                    <a onclick="changeColor(this)" href="#">Einbauwannen</a>
-                                </li>
-                                <li>
-                                    <a onclick="changeColor(this)" href="#">Mischer zu Einbauwannen</a>
-                                </li>
-                                <li>
-                                    <a onclick="changeColor(this)" href="#">Badewannen-Abtrennungen</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Duschen</a></li>
-                        <li><a href="#">Waschen</a></li>
-                        <li><a href="#">Armaturen</a></li>
-                        <li><a href="#">Sanitär-Keramiklinien</a></li>
-                        <li><a href="#">Badmöbel</a></li>
-                        </ul>
-                        </li>
-                        </ul>
-                    </div>
-
-                    <!-- Start Prize Range -->
-                    <div class="htc-grid-range mt-5">
-                        <h4 class="title__line--4">Price</h4>
-                        <div class="content-shopby">
-                            <div class="price_filter s-filter clear">
-                                <form action="#" method="GET">
-                                    <div id="slider-range"></div>
-                                    <div class="slider__range--output">
-                                        <div class="price__output--wrap">
-                                            <div class="price--output">
-                                                <span>Price :</span><input type="text" id="amount" readonly>
-                                            </div>
-                                            <div class="price--filter">
-                                                <a href="#">Filter</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Prize Range -->
-
-                    <!-- End Pro Color -->
-                    <!-- Start Best Sell Area -->
-                    <div class="htc__recent__product">
-                        <h2 class="title__line--4">best seller</h2>
-                        <div class="htc__recent__product__inner">
-                            <!-- Start Single Product -->
-                            <div class="htc__best__product">
-                                <div class="htc__best__pro__thumb">
-                                    <a href="produkte-details.php">
-                                        <img src="images/product/1.jpg" width="90" alt="small product">
-                                    </a>
-                                </div>
-                                <div class="htc__best__product__details">
-                                    <h2><a href="produkte-details.php">Largest Water Pot</a></h2>
-                                    <!-- <ul class="rating">
-                                                <li><i class="icon-star icons"></i></li>
-                                                <li><i class="icon-star icons"></i></li>
-                                                <li><i class="icon-star icons"></i></li>
-                                                <li class="old"><i class="icon-star icons"></i></li>
-                                                <li class="old"><i class="icon-star icons"></i></li>
-                                            </ul> -->
-                                    <ul class="pro__prize">
-                                        <li class="old__prize">$82.5</li>
-                                        <li>$75.2</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="htc__best__product">
-                                <div class="htc__best__pro__thumb">
-                                    <a href="produkte-details.php">
-                                        <img src="images/product/2.jpg" width="90" alt="small product">
-                                    </a>
-                                </div>
-                                <div class="htc__best__product__details">
-                                    <h2><a href="produkte-details.php">Largest Water Pot</a></h2>
-                                    <!-- <ul class="rating">
-                                                <li><i class="icon-star icons"></i></li>
-                                                <li><i class="icon-star icons"></i></li>
-                                                <li><i class="icon-star icons"></i></li>
-                                                <li class="old"><i class="icon-star icons"></i></li>
-                                                <li class="old"><i class="icon-star icons"></i></li>
-                                            </ul> -->
-                                    <ul class="pro__prize">
-                                        <li class="old__prize">$82.5</li>
-                                        <li>$75.2</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="htc__best__product">
-                                <div class="htc__best__pro__thumb">
-                                    <a href="produkte-details.php">
-                                        <img src="images/product/3.jpg" width="90" alt="small product">
-                                    </a>
-                                </div>
-                                <div class="htc__best__product__details">
-                                    <h2><a href="produkte-details.php">Largest Water Pot</a></h2>
-
-                                    <ul class="pro__prize">
-                                        <li class="old__prize">$82.5</li>
-                                        <li>$75.2</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                        </div>
-                    </div>
-                    <!-- End Best Sell Area -->
-
-
-                </div>
                 <div class="htc__recent__product img-info">
                     <div class="htc__recent__product__inner">
-                        <img src="images/product/info_checkout.png" width="100%" alt="">
+                        <img src="/images/product/info_checkout.png" width="100%" alt="">
                     </div>
                 </div>
             </div>
@@ -220,6 +63,7 @@
                     <!-- Start Product View -->
                     <div class="shop__grid__view__wrap">
                         <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade show in active row">
+                            @foreach($products as $product)
                             <!-- Start Single Product -->
                             <div class="col-lg-4 col-md-6">
                                 <div class="category">
@@ -230,224 +74,16 @@
                                     </div>
 
                                     <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Largest Water Pot</a></h4>
+                                        <h4><a href="{{url($product->slug)}}">{{$product->title}} </a></h4>
                                         <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
+                                            <li class="old__prize">${{$product->price}}</li>
                                             <li>$25.9</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/2.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Chair collection</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/3.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">dummy Product name</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/4.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Largest Water Pot</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/5.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Largest Water Pot</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/6.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Special Wood Basket</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/7.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Largest Water Pot</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/8.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">donec ac tempus nrb</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/9.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">nemo enim ipsam</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/10.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">dummy Product name</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/11.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Chair collection</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/1.jpg" alt="product images">
-                                        </a>
-                                    </div>
-
-                                    <div class="fr__product__inner">
-                                        <h4><a href="produkte-details.php">Largest Water Pot</a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
+                            @endforeach
                         </div>
                     </div>
                     <!-- End Product View -->
@@ -455,13 +91,14 @@
                 <!-- Start Pagenation -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <ul class="htc__pagenation">
+                        {{ $products->onEachSide(5)->links() }}
+                        {{--<ul class="htc__pagenation">
                             <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
                             <li><a href="#">1</a></li>
                             <li class="active"><a href="#">3</a></li>
                             <li><a href="#">19</a></li>
                             <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                        </ul>
+                        </ul>--}}
                     </div>
                 </div>
                 <!-- End Pagenation -->

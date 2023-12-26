@@ -42,8 +42,47 @@
                                     @csrf
                                     <div class="row gy-4">
 
-                                        <div class="col-xxl-4 col-md-4">
-                                            <div>
+                                        <div class="col-md-9">
+                                            <div class="row gy-4">
+                                                <div class="col-xxl-12 col-md-12">
+                                                    <div>
+                                                        <label for="title" class="form-label">Title</label>
+                                                        <input type="text" class="form-control" name="title" value="{{ isset($product)?$product->title:old('title') }}">
+                                                    </div>
+                                                    @error('title')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+
+
+                                                <div class="col-xxl-12 col-md-12">
+                                                    <div>
+                                                        <label for="descriptions" class="form-label">Short Description</label>
+                                                        <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                    </div>
+                                                    @error('description')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-xxl-12 col-md-12">
+                                                    <div>
+                                                        <label for="descriptions" class="form-label">Description</label>
+                                                        <textarea class="form-control" name="content">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                    </div>
+                                                    @error('description')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+
+
+
+                                                <!--end col-->
+
+
+                                            </div><!--end row-->
+                                        </div><!--end col 9-->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
                                                 <div class="form-group">
                                                     <label>Select parent category*</label>
                                                     <select type="text" name="category_id" class="form-control">
@@ -60,83 +99,66 @@
                                                         @endif
                                                     </select>
                                                 </div>
-
                                                 @error('category_id')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
-
                                             </div>
-                                        </div>
 
-                                        <div class="col-xxl-4 col-md-4">
-                                            <div>
-                                                <label for="title" class="form-label">Title</label>
-                                                <input type="text" class="form-control" name="title" value="{{ isset($product)?$product->title:old('title') }}">
-                                            </div>
-                                            @error('title')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-xxl-4 col-md-4">
-                                            <div>
-                                                <label for="price" class="form-label">Price</label>
-                                                <input type="text" class="form-control" name="price" value="{{ isset($product)?$product->price:old('price') }}">
-                                            </div>
-                                            @error('price')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="descriptions" class="form-label">Short Description</label>
-                                                <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
-                                            </div>
-                                            @error('description')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="descriptions" class="form-label">Description</label>
-                                                <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
-                                            </div>
-                                            @error('description')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xxl-4 col-md-4">
-                                            <div>
-                                                <label for="gallery_image" class="form-label">Product Image</label>
-                                                <input type="file" class="form-control" name="images[]" multiple>
-                                            </div>
-                                            @error('images')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-
-
-
-                                        <div class="col-xxl-4 col-md-4">
-                                            <div>
-                                                <label for="name" class="form-label">Status</label>
-                                                <select name="status" class="form-control">
-                                                    <option value="" @if(isset($product) && $product->status == '') {{"selected"}} @endif>--Select--</option>
-                                                    <option value="1" @if(isset($product) && $product->status == 1) {{"selected"}} @endif selected="">Active</option>
-                                                    <option value="0" @if(isset($product) && $product->status == 0) {{"selected"}} @endif>Inactive</option>
-                                                </select>
-
-                                                @error('status')
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="sku" class="form-label">SKU</label>
+                                                    <input type="text" class="form-control" name="sku" value="{{ isset($product)?$product->sku:old('sku') }}">
+                                                </div>
+                                                @error('title')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
-
                                             </div>
+
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="price" class="form-label">Price</label>
+                                                    <input type="text" class="form-control" name="price" value="{{ isset($product)?$product->price:old('price') }}">
+                                                </div>
+                                                @error('price')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="sell_price" class="form-label">Sell Price</label>
+                                                    <input type="text" class="form-control" name="sell_price" value="{{ isset($product)?$product->sell_price:old('sell_price') }}">
+                                                </div>
+                                                @error('price')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="gallery_image" class="form-label">Product Image</label>
+                                                    <input type="file" class="form-control" name="thumbnail">
+                                                </div>
+                                                @error('images')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="name" class="form-label">Status</label>
+                                                    <select name="status" class="form-control">
+                                                        <option value="" @if(isset($product) && $product->status == '') {{"selected"}} @endif>--Select--</option>
+                                                        <option value="1" @if(isset($product) && $product->status == 1) {{"selected"}} @endif selected="">Active</option>
+                                                        <option value="0" @if(isset($product) && $product->status == 0) {{"selected"}} @endif>Inactive</option>
+                                                    </select>
+
+                                                    @error('status')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+
+                                                </div>
+                                            </div>
+
+
                                         </div>
-
-
-                                        <!--end col-->
-
-                                        <!--end col-->
                                     </div>
 
                                     <br><br>
@@ -177,6 +199,7 @@
 <!-- END layout-wrapper -->
 <script>
     CKEDITOR.replace('descriptions');
+    CKEDITOR.replace('content');
 </script>
 
 

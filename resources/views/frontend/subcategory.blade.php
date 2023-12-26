@@ -1,7 +1,7 @@
 @extends('frontend/layout/layout')
 @section('page_title', 'Admin Dashboard')
 @section('container')
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url('/images/bg/4.jpg') no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -19,6 +19,8 @@
     </div>
 </div>
 <!-- Start Product Grid -->
+
+
 <section class="htc__product__grid bg__white ptb--100">
     <div class="container">
         <div class="row">
@@ -26,7 +28,7 @@
                 @include('frontend.partial.sidebar')
                 <div class="htc__recent__product img-info">
                     <div class="htc__recent__product__inner">
-                        <img src="images/product/info_checkout.png" width="100%" alt="">
+                        <img src="/images/product/info_checkout.png" width="100%" alt="">
                     </div>
                 </div>
             </div>
@@ -67,10 +69,12 @@
                         <hr class="mt-2">
 
                         <div class="row">
-                            @foreach($categories as $category)
+                            @php $current_uri = request()->segments();@endphp
+                            @foreach($categories->subcategory as $category)
                             <div class="col-lg-4 col-sm-6">
                                 <div class="box">
-                                    <a href="{{url($category->slug)}}">
+                                    <a href="{{ route('category.show', ['category' => implode('/',$current_uri).'/'.$category->slug]) }}">
+                                        {{--<a href="{{url('category/'.$category->slug)}}">--}}
                                         @if($category->image)
                                         <img src="{{asset($category->image)}}" alt="">
                                         @else

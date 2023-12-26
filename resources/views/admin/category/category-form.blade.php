@@ -54,7 +54,7 @@
                                                     <?php $dash = ''; ?>
                                                     <option value="{{$category1->id}}" @if(isset($category) && $category->parent_id == $category1->id) {{"selected"}} @endif>{{$category1->title}}</option>
                                                     @if(count($category1->subcategory))
-                                                    @include('admin.category.subCategoryList-option',['subcategories' => $category1->subcategory,'category'=>$category])
+                                                    @include('admin.category.subCategoryList-option',['subcategories' => $category1->subcategory,'category'=>$category1])
                                                     @endif
                                                     @endforeach
                                                     @endif
