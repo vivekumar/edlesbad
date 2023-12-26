@@ -50,7 +50,7 @@ class ProductController extends Controller
             $product->slug = Str::slug($request->title, '-');
             $product->price = $request->price;
             $product->sell_price = $request->sell_price;
-            $product->description = $request->description;
+            $product->description = $request->descriptions;
             $product->content = $request->content;
             $product->sku = $request->sku;
             $product->status = $request->status;
@@ -98,8 +98,8 @@ class ProductController extends Controller
             return redirect()->back()->with(['message' => 'Invalid Action']);
 
         $product = Product::findOrFail($id);
-        $categories = Category::orderBy('id', 'desc')->get();
-
+        //$categories = Category::orderBy('id', 'desc')->get();
+        $categories = Category::where('parent_id', null)->orderby('id', 'desc')->get();
         if ($type == "edit") {
             return view('admin.product.product-form', compact('product', 'categories'));
         }

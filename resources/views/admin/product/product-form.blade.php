@@ -58,7 +58,7 @@
                                                 <div class="col-xxl-12 col-md-12">
                                                     <div>
                                                         <label for="descriptions" class="form-label">Short Description</label>
-                                                        <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                        <textarea class="form-control" name="descriptions">{{ isset($product)?$product->description:old('description') }}</textarea>
                                                     </div>
                                                     @error('description')
                                                     <span class="text-danger">{{$message}}</span>
@@ -67,7 +67,7 @@
                                                 <div class="col-xxl-12 col-md-12">
                                                     <div>
                                                         <label for="descriptions" class="form-label">Description</label>
-                                                        <textarea class="form-control" name="content">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                        <textarea class="form-control" name="content">{{ isset($product)?$product->content:old('content') }}</textarea>
                                                     </div>
                                                     @error('description')
                                                     <span class="text-danger">{{$message}}</span>
@@ -91,7 +91,7 @@
                                                         @foreach($categories as $category1)
 
                                                         <?php $dash = ''; ?>
-                                                        <option value="{{$category1->id}}">{{$category1->title}}</option>
+                                                        <option value="{{$category1->id}}" @if($category1->id==$product->category_id){{'selected'}}@endif>{{$category1->title}}</option>
                                                         @if(count($category1->subcategory))
                                                         @include('admin.category.subCategoryList-option',['subcategories' => $category1->subcategory])
                                                         @endif
@@ -140,13 +140,16 @@
                                                 @error('images')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
+                                                @if($product->thumbnail)
+                                                <img src="{{url('storage/products/'.$product->thumbnail)}}" style="max-width:100%; height:150px">
+                                                @endif
                                             </div>
                                             <div class="form-group">
                                                 <div>
                                                     <label for="name" class="form-label">Status</label>
                                                     <select name="status" class="form-control">
                                                         <option value="" @if(isset($product) && $product->status == '') {{"selected"}} @endif>--Select--</option>
-                                                        <option value="1" @if(isset($product) && $product->status == 1) {{"selected"}} @endif selected="">Active</option>
+                                                        <option value=" 1" @if(isset($product) && $product->status == 1) {{"selected"}} @endif selected="">Active</option>
                                                         <option value="0" @if(isset($product) && $product->status == 0) {{"selected"}} @endif>Inactive</option>
                                                     </select>
 
