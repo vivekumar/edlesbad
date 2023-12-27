@@ -10,7 +10,7 @@
                         <nav class="bradcaump-inner">
                             <a class="breadcrumb-item" href="{{url('/')}}">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <span class="breadcrumb-item active">Produkte details</span>
+                            <span class="breadcrumb-item active">{{$product->title}}</span>
                         </nav>
                     </div>
                 </div>
@@ -65,25 +65,25 @@
                 </div>
                 <div class="col-lg-7 smt-40 xmt-40">
                     <div class="ht__product__dtl">
-                        <h2>Badewanne Badu</h2>
-                        <h6><span>BB_Badu-M</span></h6>
-                        <ul class="rating">
+                        <h2>{{$product->title}}</h2>
+                        <h6><span>{{$product->sku}}</span></h6>
+                        {{--<ul class="rating">
                             <li><i class="icon-star icons"></i></li>
                             <li><i class="icon-star icons"></i></li>
                             <li><i class="icon-star icons"></i></li>
                             <li class="old"><i class="icon-star icons"></i></li>
                             <li class="old"><i class="icon-star icons"></i></li>
-                        </ul>
+                        </ul>--}}
                         <ul class="pro__prize">
-                            <li class="old__prize">CHF8'000.00</li>
-                            <li>CHF6'000.00</li>
-                        </ul>
-                        <p class="pro__info">Dies sind Listenpreise; Für Nettopreise verlangen Sie bitte eine Offerte.</p>
-                        <p class="pro__info">Preisänderung vorbehalten. Preise exkl. MwSt.
+                            @if($product->sell_price && $product->price>$product->sell_price)
+                            <li class="old__prize"><strike>CHF {{$product->price}}</strike></li>
+                            <li>CHF {{$product->sell_price}}</li>
+                            @else
+                            <li>CHF {{$product->price}}</li>
+                            @endif
 
-                            Wir sind ein sympathischer Badlieferant mit bestem Kundenservice und bester Beratung.</p>
-                        <p>Diese Webseite ist kein eigentlicher Webshop, sondern ein „Schaufenster“ welches Ihnen ein kleiner Teil unserer Produkte näher bringen möchte.
-                            Besuchen Sie unsere Ausstellung! Beratungen bitte Termin vereinbaren.</p>
+                        </ul>
+                        <div class="product-description">{!!$product->description!!}</div>
                         <div class="ht__pro__desc">
                             <div class="sin__desc">
                                 <p><span>Availability:</span> In Stock</p>
@@ -142,12 +142,7 @@
                     <!-- Start Single Content -->
                     <div role="tabpanel" id="description" class="pro__single__content tab-pane fade show in active">
                         <div class="pro__tab__content__inner">
-
-                            <h4 class="ht__pro__title">Badu weiss matt; Die bequemste Badewanne der Welt</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                            <h4 class="ht__pro__title">Standard Featured</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in</p>
+                            {!!$product->content!!}
                         </div>
                     </div>
                     <!-- End Single Content -->

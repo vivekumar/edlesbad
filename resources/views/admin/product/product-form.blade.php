@@ -83,27 +83,27 @@
                                         </div><!--end col 9-->
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <div class="form-group">
-                                                    <label>Select parent category*</label>
-                                                    <select type="text" name="category_id" class="form-control">
-                                                        <option value="">None</option>
-                                                        @if($categories)
-                                                        @foreach($categories as $category1)
+                                                <label>Select parent category*</label>
+                                                <select type="text" name="category_id" class="form-control">
+                                                    <option value="">None</option>
+                                                    @if($categories)
+                                                    @foreach($categories as $category1)
 
-                                                        <?php $dash = ''; ?>
-                                                        <option value="{{$category1->id}}" @if($category1->id==$product->category_id){{'selected'}}@endif>{{$category1->title}}</option>
-                                                        @if(count($category1->subcategory))
-                                                        @include('admin.category.subCategoryList-option',['subcategories' => $category1->subcategory])
-                                                        @endif
-                                                        @endforeach
-                                                        @endif
-                                                    </select>
-                                                </div>
+                                                    @php $dash = '';
+                                                    $selected_option = isset($product) ? $product->category_id : '';
+
+                                                    @endphp
+                                                    <option value="{{$category1->id}}" @if($category1->id==$selected_option){{'selected'}}@endif>{{$category1->title}}</option>
+                                                    @if(count($category1->subcategory))
+                                                    @include('admin.category.subCategoryList-option',['subcategories' => $category1->subcategory,'selected'=>$selected_option])
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                </select>
                                                 @error('category_id')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                             </div>
-
                                             <div class="form-group">
                                                 <div>
                                                     <label for="sku" class="form-label">SKU</label>
@@ -113,7 +113,6 @@
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                             </div>
-
                                             <div class="form-group">
                                                 <div>
                                                     <label for="price" class="form-label">Price</label>
@@ -140,7 +139,7 @@
                                                 @error('images')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
-                                                @if($product->thumbnail)
+                                                @if(isset($product->thumbnail))
                                                 <img src="{{url('storage/products/'.$product->thumbnail)}}" style="max-width:100%; height:150px">
                                                 @endif
                                             </div>

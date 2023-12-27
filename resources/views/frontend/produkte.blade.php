@@ -68,16 +68,24 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="category">
                                     <div class="ht__cat__thumb">
-                                        <a href="produkte-details.php">
-                                            <img src="images/product/1.jpg" alt="product images">
+                                        <a href="{{url($product->slug)}}">
+                                            @if($product->thumbnail)
+                                            <img src="{{asset('storage/products/'.$product->thumbnail)}}" alt="{{$product->title}}">
+                                            @else
+                                            <img src="{{asset('images/product/1.jpg')}}" alt="product images">
+                                            @endif
                                         </a>
                                     </div>
 
                                     <div class="fr__product__inner">
                                         <h4><a href="{{url($product->slug)}}">{{$product->title}} </a></h4>
                                         <ul class="fr__pro__prize">
-                                            <li class="old__prize">${{$product->price}}</li>
-                                            <li>$25.9</li>
+                                            @if($product->sell_price && $product->price>$product->sell_price)
+                                            <li class="old__prize"><strike>CHF {{$product->price}}</strike></li>
+                                            <li>CHF {{$product->sell_price}}</li>
+                                            @else
+                                            <li>CHF {{$product->price}}</li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>

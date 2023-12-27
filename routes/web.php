@@ -25,11 +25,11 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/dashbaord', [HomeController::class, 'dashbaord'])->name('dashbaord');
 Route::get('/admin', [HomeController::class, 'index'])->name('home');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blogDetail');
+
 Route::get('/inspiration', [HomeController::class, 'inspiration'])->name('inspiration');
 Route::get('/kategorien', [HomeController::class, 'kategorien'])->name('kategorien');
 Route::get('/produkte', [HomeController::class, 'product'])->name('product');
-Route::get('/produkte-details', [HomeController::class, 'productDetals'])->name('productDetals');
+
 Route::get('/ueber-uns-edlesbad', [HomeController::class, 'ueberUnsEdlesbad'])->name('ueberUnsEdlesbad');
 Route::get('/unsere-lieferanten', [HomeController::class, 'unsereLieferanten'])->name('unsereLieferanten');
 //Route::post('/admin', [LoginController::class, 'checkAuth'])->name('login');
@@ -49,4 +49,6 @@ Route::middleware([CheckUserLog::class])->group(function () {
 });
 
 //Route::get('/{slug}', [HomeController::class, 'category'])->name('category1');
-Route::get('/{category}', [HomeController::class, 'category'])->name('category.show')->where('category', '.*');
+Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blogDetail');
+//Route::get('/{product_slug}', [HomeController::class, 'productDetals'])->name('productDetals');
+//Route::get('/{category}', [HomeController::class, 'category'])->name('category.show')->where('category', '.*');

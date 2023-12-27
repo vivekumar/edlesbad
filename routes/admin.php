@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 
-
+use App\Http\Controllers\Admin\ProductImageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -154,6 +154,22 @@ Route::middleware([CheckAdminLog::class])->group(function () {
         Route::get('create', [ProductController::class, 'create']);
         Route::post('save', [ProductController::class, 'save']);
         Route::get('{type}/{id}', [ProductController::class, 'action']);
+
+        //Route::resource('/productimage', ProductImageController::class);
+        //Route::get('/productimage/status/{product}/{status}/{id}', [ProductImageController::class, 'status'])->name('admin.productimage.status');
+    });
+    Route::group(['prefix' => 'product-image'], function () {
+        Route::get('/', [ProductImageController::class, 'index'])->name('productimage.index');
+        Route::get('create', [ProductImageController::class, 'create'])->name('productimage.create');
+        Route::post('save', [ProductImageController::class, 'store'])->name('productimage.store');
+        Route::post('edit/{productimage}', [ProductImageController::class, 'store'])->name('productimage.store');
+
+        Route::get('edit/{id}', [ProductImageController::class, 'edit'])->name('productimage.edit');
+        Route::put('update/{id}', [ProductImageController::class, 'update'])->name('productimage.update');
+        Route::delete('delete/{id}', [ProductImageController::class, 'destroy'])->name('productimage.destroy');
+
+        Route::get('/productimage/status/{product}/{status}/{id}', [ProductImageController::class, 'status'])->name('productimage.status');
+        Route::get('{type}/{id}', [ProductImageController::class, 'action']);
     });
 
     Route::get('setting', [DashboardController::class, 'setting']);

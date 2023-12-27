@@ -26,7 +26,7 @@
                 @include('frontend.partial.sidebar')
                 <div class="htc__recent__product img-info">
                     <div class="htc__recent__product__inner">
-                        <img src="images/product/info_checkout.png" width="100%" alt="">
+                        <img src="/images/product/info_checkout.png" width="100%" alt="">
                     </div>
                 </div>
             </div>

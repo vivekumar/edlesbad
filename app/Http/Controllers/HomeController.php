@@ -32,7 +32,6 @@ class HomeController extends Controller
     }
     function blogDetail(Request $request, $slug)
     {
-
         $data['blog'] = Blog::orderBy('id', 'desc')->where('slug', $slug)->first();
         return view('frontend.blog-details')->with($data);
     }
@@ -48,11 +47,8 @@ class HomeController extends Controller
     }
     function category(Request $request, $slug)
     {
-
         $categorySlugs = explode('/', $slug);
-
         $category = Category::where('slug', array_shift($categorySlugs))->whereNull('parent_id')->first();
-        //dd($category);
         foreach ($categorySlugs as $slug) {
             $category = $category->childs()->where('slug', $slug)->first();
             if (!$category) {
@@ -61,20 +57,27 @@ class HomeController extends Controller
             }
         }
 
-
-
-        $data['categories'] = Category::where(['status' => 1, 'slug' => $slug])->with('subcategory')->first();
-
-        if (count($data['categories']->subcategory) > 0) {
-            return view('frontend.subcategory')->with($data);
+        $categories = Category::where(['status' => 1, 'slug' => $slug])->with('subcategory')->first();
+        $product = Product::where(['status' => 1, 'slug' => $slug])->first();
+        $page = Page::where(['status' => 1, 'slug' => $slug])->first();
+        if ($categories) {
+            if (count($categories->subcategory) > 0) {
+                return view('frontend.subcategory', compact('categories'));
+            } else {
+                $products = Product::where(['status' => 1, 'category_id' => $categories->id])->paginate(15);
+                return view('frontend.produkte', compact('products'));
+            }
+        } else if ($product) {
+            return view('frontend.produkte-details', compact('product'));
+        } else if ($page) {            
+            return view('frontend.defaults', compact('product'));
         } else {
-            $products = Product::where(['status' => 1, 'category_id' => $data['categories']->id])->paginate(15);
-            return view('frontend.produkte', compact('products'));
+            abort(404);
         }
     }
-    function productDetals(Request $request, $slug)
+    function productDetals($product_slug)
     {
-        $data['product'] = Product::where(['status' => 1])->first();
+        $data['product'] = Product::where(['status' => 1, 'slug' => $product_slug])->first();
         return view('frontend.produkte-details')->with($data);
     }
     function ueberUnsEdlesbad()
