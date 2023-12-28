@@ -135,26 +135,14 @@ class ProductImageController extends Controller
         $this->validate($request, [
             'product_image_name' => 'required',
             //'product_image'=>'mimes:jpeg,jpg,png,webp',
-        ], [
-            // 'product_image_name.required'=>'Product image name is required',
-            // 'product_image.required'=>'Product image is required',
-            // 'product_image.mimes'=>'Image should be jpeg, jpg, png, webp',
-
-            'product_image_name.required' => trans('backendmsg.proimage_controller_msg_01'),
-            //'product_image.required'=>trans('backendmsg.proimage_controller_msg_02'),
-            //'product_image.mimes'=>trans('backendmsg.proimage_controller_msg_03'),
         ]);
 
         $model = ProductImage::where('id', '=', $id)->first();
         $model->image_name = $request->input('product_image_name');
         $model->image_ordering = $request->input('product_ordering');
-        //dd($request->product_image);
         if ($request->hasfile('product_image')) {
-            dd($request);
             $request->validate([
                 'product_image' => 'mimes:jpeg,jpg,png,webp',
-            ], [
-                'product_image.mimes' => trans('backendmsg.proimage_controller_msg_03'),
             ]);
 
             // if (Storage::exists('storage/products/' . $model->image)) {

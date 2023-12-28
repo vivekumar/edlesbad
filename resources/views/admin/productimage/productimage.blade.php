@@ -51,7 +51,7 @@
 
                     <!--<td>{{ $lists->product_lists_id }}</td>-->
                     <td>{{ $lists->image_ordering }}</td>
-                    <td>{{ $productlist[0]->name }}</td>
+                    <td>{{ $productlist[0]->title }}</td>
 
 
                     <td>

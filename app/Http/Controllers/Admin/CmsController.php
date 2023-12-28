@@ -9,18 +9,20 @@ use App\Models\Page;
 use App\Models\PageSection;
 use Exception;
 use File;
+use DB;
 
 class CmsController extends Controller
 {
     public function index(Request $request)
     {
-        $data['pages'] = Page::orderBy('id','asc')->paginate(15);
+        $data['pages'] = Page::orderBy('id', 'asc')->paginate(15);
         return view('admin.cms.index')->with($data);
     }
 
     public function create(Request $request)
     {
-        return view('admin.cms.page-form');
+        $templates = DB::table('templates')->orderBy('order', 'asc')->get();
+        return view('admin.cms.page-form', compact('templates'));
     }
 
 
@@ -39,7 +41,7 @@ class CmsController extends Controller
             $page = Page::findOrFail($request->page_id);
             $msg = "Page updated Successfully.";
         }
-       
+
         try {
             $page->title = $request->title;
             $page->descriptions = $request->descriptions;
@@ -51,6 +53,7 @@ class CmsController extends Controller
                 $page->image = '/storage/page/' . $filename;
             }
             $page->slug = Str::slug($request->title, '-');
+            $page->template_slug = $request->template_slug;
             $page->status = $request->status;
             $page->meta_title = $request->meta_title;
             $page->meta_keyword = $request->meta_keyword;
@@ -66,12 +69,13 @@ class CmsController extends Controller
     {
         //dd($type);
         if (!in_array($type, ['edit', 'delete', 'status']))
-        return redirect()->back()->with(['message' => 'Invalid Action']);
+            return redirect()->back()->with(['message' => 'Invalid Action']);
 
         $page = Page::findOrFail($id);
 
         if ($type == "edit") {
-            return view('admin.cms.page-form', compact('page'));
+            $templates = DB::table('templates')->orderBy('order', 'asc')->get();
+            return view('admin.cms.page-form', compact('page', 'templates'));
         }
         if ($type == "delete") {
             if (\File::exists(public_path($page->image))) {
@@ -92,14 +96,14 @@ class CmsController extends Controller
     public function sectionIndex(Request $request)
     {
         ///$page_id = $request->pid;
-        $data['sections'] = PageSection::orderBy('id','desc')->where('page_id',$request->pid)->paginate(25);
+        $data['sections'] = PageSection::orderBy('id', 'desc')->where('page_id', $request->pid)->paginate(25);
         return view('admin.cms.page-section')->with($data);
     }
 
     public function sectionCreate(Request $request)
     {
-        $pages = Page::where('status',1)->get();
-        return view('admin.cms.page-section-form',compact('pages'));
+        $pages = Page::where('status', 1)->get();
+        return view('admin.cms.page-section-form', compact('pages'));
     }
 
 
@@ -118,7 +122,7 @@ class CmsController extends Controller
             $pageSection = PageSection::findOrFail($request->page_section_id);
             $msg = "Page Section updated Successfully.";
         }
-       
+
         try {
             $pageSection->page_id = $request->page_id;
             $pageSection->title = $request->title;
@@ -144,13 +148,13 @@ class CmsController extends Controller
     {
         //dd($type);
         if (!in_array($type, ['edit', 'delete', 'status']))
-        return redirect()->back()->with(['message' => 'Invalid Action']);
+            return redirect()->back()->with(['message' => 'Invalid Action']);
 
         $section = PageSection::findOrFail($id);
 
         if ($type == "edit") {
-            $pages = Page::where('status',1)->get();
-            return view('admin.cms.page-section-form', compact('section','pages'));
+            $pages = Page::where('status', 1)->get();
+            return view('admin.cms.page-section-form', compact('section', 'pages'));
         }
         if ($type == "delete") {
             if (\File::exists(public_path($section->image))) {

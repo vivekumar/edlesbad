@@ -47,19 +47,25 @@ class HomeController extends Controller
     }
     function category(Request $request, $slug)
     {
-        $categorySlugs = explode('/', $slug);
-        $category = Category::where('slug', array_shift($categorySlugs))->whereNull('parent_id')->first();
-        foreach ($categorySlugs as $slug) {
-            $category = $category->childs()->where('slug', $slug)->first();
-            if (!$category) {
-                // Handle invalid category or show a 404 page
-                abort(404);
-            }
-        }
 
-        $categories = Category::where(['status' => 1, 'slug' => $slug])->with('subcategory')->first();
-        $product = Product::where(['status' => 1, 'slug' => $slug])->first();
-        $page = Page::where(['status' => 1, 'slug' => $slug])->first();
+        $categorySlugs = explode('/', $slug);
+        $end_slug = end($categorySlugs);
+        // $category = Category::where('slug', array_shift($categorySlugs))->whereNull('parent_id')->first();
+        // if ($category) {
+        //     foreach ($categorySlugs as $slug) {
+        //         $category = $category->childs()->where('slug', $slug)->first();
+        //         if (!$category) {
+        //             // Handle invalid category or show a 404 page
+        //             abort(404);
+        //         }
+        //     }
+        // }
+
+        $categories = Category::where(['status' => 1, 'slug' => $end_slug])->with('subcategory')->first();
+        $product = Product::where(['status' => 1, 'slug' => $end_slug])->with('gallery')->first();
+        //array_shift($categorySlugs); //dd($slug);
+
+        $page = Page::where(['status' => 1, 'slug' => $end_slug])->first();
         if ($categories) {
             if (count($categories->subcategory) > 0) {
                 return view('frontend.subcategory', compact('categories'));
@@ -68,17 +74,19 @@ class HomeController extends Controller
                 return view('frontend.produkte', compact('products'));
             }
         } else if ($product) {
-            return view('frontend.produkte-details', compact('product'));
-        } else if ($page) {            
-            return view('frontend.defaults', compact('product'));
+            $latest_product = Product::where(['status' => 1])->latest()->take(4)->get();
+            return view('frontend.produkte-details', compact('product', 'latest_product'));
+        } else if ($page) {
+            $template = $page->template_slug ? $page->template_slug : 'defaults';
+            return view("frontend.{$template}", compact('page'));
         } else {
             abort(404);
         }
     }
     function productDetals($product_slug)
     {
-        $data['product'] = Product::where(['status' => 1, 'slug' => $product_slug])->first();
-        return view('frontend.produkte-details')->with($data);
+        $product = Product::where(['status' => 1, 'slug' => $product_slug])->with('gallery')->first();
+        return view('frontend.produkte-details', compact('product'));
     }
     function ueberUnsEdlesbad()
     {

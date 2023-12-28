@@ -11,6 +11,9 @@ class ProductGallery extends Model
     protected $fillable = array('*');
     use HasFactory;
 
-   
+    // public function gallery()
+    // {
+    //     return $this->belongsTo(ProductImage::class, 'product_id', 'id');
+    // }
 
 }

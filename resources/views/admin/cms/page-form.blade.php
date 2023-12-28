@@ -68,29 +68,35 @@
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                             </div>
-
                                             <div class="col-xxl-6 col-md-6">
                                                 <div>
-                                                    <label for="image" class="form-label">Image</label>
-                                                    <input type="file" class="form-control" name="image">
+                                                    <label for="name" class="form-label">Parent Menu</label>
+                                                    <select name="template_slug" class="form-control">
+                                                        @foreach($templates as $template)
+                                                        <option value="{{$template->slug}}" @if(isset($page) && $page->template_slug == $template->slug) {{"selected"}} @endif>{{$template->name}}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                    @error('parent_id')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+
                                                 </div>
-                                                @error('image')
+                                            </div>
+
+
+
+                                            <div class="col-xxl-12 col-md-12">
+                                                <div>
+                                                    <label for="descriptions" class="form-label">Content</label>
+                                                    <textarea class="form-control" name="descriptions"> {{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                </div>
+                                                @error('descriptions')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                             </div>
 
-                                            
-                                        <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="descriptions" class="form-label">Content</label>
-                                                <textarea class="form-control" name="descriptions"> {{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
-                                            </div>
-                                            @error('descriptions')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-
-                                            <div class="col-xxl-6 col-md-6">
+                                            <div class="col-xxl-4 col-md-4">
                                                 <div>
                                                     <label for="name" class="form-label">Status</label>
                                                     <select name="status" class="form-control">
@@ -105,8 +111,16 @@
 
                                                 </div>
                                             </div>
-
-                                            @if(isset($page))
+                                            <div class="col-xxl-4 col-md-4">
+                                                <div>
+                                                    <label for="image" class="form-label">Image</label>
+                                                    <input type="file" class="form-control" name="image">
+                                                </div>
+                                                @error('image')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            @if(isset($page) && !empty($page->image))
                                             <div class="col-xxl-4 col-md-4">
                                                 <div>
                                                     <label for="page" class="form-label">Old Image</label>
@@ -138,26 +152,26 @@
                                             </div>
 
                                             <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="meta_keyword" class="form-label">Meta Keyword</label>
-                                                <textarea class="form-control" name="meta_keyword"> {{ isset($page)?$page->meta_keyword:old('meta_keyword') }}</textarea>
-                                            </div>
-                                            @error('meta_keyword')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                <div>
+                                                    <label for="meta_keyword" class="form-label">Meta Keyword</label>
+                                                    <textarea class="form-control" name="meta_keyword"> {{ isset($page)?$page->meta_keyword:old('meta_keyword') }}</textarea>
+                                                </div>
+                                                @error('meta_keyword')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="meta_description" class="form-label">Meta Description</label>
-                                                <textarea class="form-control" name="meta_description"> {{ isset($page)?$page->meta_description:old('meta_description') }}</textarea>
+                                                <div>
+                                                    <label for="meta_description" class="form-label">Meta Description</label>
+                                                    <textarea class="form-control" name="meta_description"> {{ isset($page)?$page->meta_description:old('meta_description') }}</textarea>
+                                                </div>
+                                                @error('meta_description')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
-                                            @error('meta_description')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
 
-                                        
+
 
 
                                             <!--end col-->
@@ -168,13 +182,13 @@
 
 
                                 </div>
-                                  <br>
+                                <br>
                                 <div class="row gy-4">
-                                <div class="col-xxl-4 col-md-4">
-                                <input type="hidden" name="old_image" value="{{ isset($page)?$page->image:old('old_image') }}">
-                                 <input type="hidden" name="page_id" value="{{ isset($page)?$page->id:old('page_id') }}">
-                                <input type="submit" class="btn btn-info" value="submit">
-                                </div>
+                                    <div class="col-xxl-4 col-md-4">
+                                        <input type="hidden" name="old_image" value="{{ isset($page)?$page->image:old('old_image') }}">
+                                        <input type="hidden" name="page_id" value="{{ isset($page)?$page->id:old('page_id') }}">
+                                        <input type="submit" class="btn btn-info" value="submit">
+                                    </div>
                                 </div>
 
                             </form>
@@ -200,7 +214,7 @@
 <!-- END layout-wrapper -->
 
 <script>
-CKEDITOR.replace( 'descriptions' );
+    CKEDITOR.replace('descriptions');
 </script>
 
 @stop

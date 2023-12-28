@@ -30,35 +30,28 @@
                         <!-- Start Product Big Images -->
                         <div class="product__big__images">
                             <div class="portfolio-full-image tab-content">
-                                <div role="tabpanel" class="tab-pane fade show active" id="img-tab-1">
-                                    <img src="images/product/12.jpg" alt="full-image">
+                                @if($product->gallery->count()>0)
+                                @foreach($product->gallery as $key=>$gallery)
+                                <div role="tabpanel" class="tab-pane fade show @if($key==0) active @endif" id="img-tab-{{$key}}">
+                                    <img src="{{asset('storage/products/'.$gallery->image)}}" alt="{{$gallery->image_name}}">
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="img-tab-2">
-                                    <img src="images/product/13.jpg" alt="full-image">
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="img-tab-3">
-                                    <img src="images/product/14.jpg" alt="full-image">
-                                </div>
+                                @endforeach
+                                @else
+                                <img src="{{asset('storage/products/'.$product->thumbnail)}}" alt="full-image">
+                                @endif
                             </div>
                         </div>
                         <!-- End Product Big Images -->
                         <!-- Start Small images -->
                         <ul class="nav product__small__images" role="tablist">
+                            @foreach($product->gallery as $key=>$gallery)
                             <li role="presentation" class="pot-small-img">
-                                <a class="active" href="#img-tab-1" role="tab" data-toggle="tab">
-                                    <img src="images/product/12.jpg" width="80" alt="small-image">
+                                <a class="@if($key==0) active @endif" href="#img-tab-{{$key}}" role="tab" data-toggle="tab">
+                                    <img src="{{asset('storage/products/'.$gallery->image)}}" width="80" alt="{{$gallery->image_name}}">
                                 </a>
                             </li>
-                            <li role="presentation" class="pot-small-img">
-                                <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                    <img src="images/product/13.jpg" width="80" alt="small-image">
-                                </a>
-                            </li>
-                            <li role="presentation" class="pot-small-img">
-                                <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                    <img src="images/product/14.jpg" width="80" alt="small-image">
-                                </a>
-                            </li>
+                            @endforeach
+
                         </ul>
                         <!-- End Small images -->
                     </div>
@@ -186,15 +179,15 @@
             </div>
         </div>
         <div class="product__wrap row">
-            <!-- Start Single Product -->
+            @foreach($latest_product as $lproduct)
             <div class="col-lg-3 col-md-6">
                 <div class="category">
                     <div class="ht__cat__thumb">
-                        <a href="product-details.html">
-                            <img src="images/product/1.jpg" alt="product images">
+                        <a href="{{$lproduct->slug}}">
+                            <img src="{{asset('storage/products/'.$lproduct->thumbnail)}}" alt="product images">
                         </a>
                     </div>
-                    <div class="fr__hover__info">
+                    {{--<div class="fr__hover__info">
                         <ul class="product__action">
                             <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
 
@@ -202,98 +195,21 @@
 
                             <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
                         </ul>
-                    </div>
+                    </div>--}}
                     <div class="fr__product__inner">
-                        <h4><a href="product-details.html">Product Title Here </a></h4>
+                        <h4><a href="{{$lproduct->slug}}">{{$lproduct->title}}</a></h4>
                         <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
+                            @if($lproduct->sell_price && $lproduct->price>$product->sell_price)
+                            <li class="old__prize"><strike>CHF {{$lproduct->price}}</strike></li>
+                            <li>CHF {{$lproduct->sell_price}}</li>
+                            @else
+                            <li>CHF {{$lproduct->price}}</li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="product-details.html">
-                            <img src="images/product/2.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
-
-                            <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="fr__product__inner">
-                        <h4><a href="product-details.html">Product Title Here </a></h4>
-                        <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="product-details.html">
-                            <img src="images/product/3.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
-
-                            <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="fr__product__inner">
-                        <h4><a href="product-details.html">Product Title Here </a></h4>
-                        <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="product-details.html">
-                            <img src="images/product/4.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
-
-                            <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="fr__product__inner">
-                        <h4><a href="product-details.html">Product Title Here </a></h4>
-                        <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Product -->
+            @endforeach
         </div>
     </div>
 </section>

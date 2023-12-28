@@ -51,4 +51,4 @@ Route::middleware([CheckUserLog::class])->group(function () {
 //Route::get('/{slug}', [HomeController::class, 'category'])->name('category1');
 Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blogDetail');
 //Route::get('/{product_slug}', [HomeController::class, 'productDetals'])->name('productDetals');
-//Route::get('/{category}', [HomeController::class, 'category'])->name('category.show')->where('category', '.*');
+Route::get('/{category}', [HomeController::class, 'category'])->name('category.show')->where('category', '.*');

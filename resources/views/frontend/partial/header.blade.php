@@ -21,6 +21,7 @@
                         <div class="col-auto">
                             <div class="header-right-wrapper">
                                 <ul class="header-right-text d-flex flex-column flex-md-row justify-content-center">
+                                    {{--
                                     @if (Auth::check())
                                     <li class="mr-2">Hi {{ Auth::user()->first_name ?? ""}}</li>
                                     <li class="mr-2"><a href="{{url('myaccount')}}" class="text-white">My account</a></li>
@@ -28,15 +29,16 @@
                                     @else
                                     <li class="mr-2"><a href="{{url('login')}}" class="text-white">{{_('Login')}}</a></li>
                                     @endif
+                                    --}}
                                     <li class="mr-2"><a class="text-white" href="{{'/'}}">Home</a></li>
                                     <li class="mr-2"><a href="{{url('blog')}}" class="text-white">Blog</a></li>
 
-                                    <li>
+                                    {{--<li>
                                         <div class="htc__shopping__cart mt-md-0 mt-2 ml-2">
                                             <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                             <a href="#"><span class="htc__qua">2</span></a>
                                         </div>
-                                    </li>
+                                    </li>--}}
                                 </ul>
 
                             </div>
@@ -60,9 +62,21 @@
                     </div>
                     <div class="col-xl-10 d-none d-xl-block">
                         <nav class="main__menu__nav">
+
                             <ul class="main__menu">
-                                <!-- <li><a href="#">Home</a></li> -->
-                                <li><a href="/produkte">Produkte</a></li>
+                                @foreach($mainMenu as $menu)
+                                <li class="@if($menu->children->count()>0)drop @endif"><a href="@if($menu->page_type=='page'){{url($menu->page->slug)}} @else {{url($menu->slug)}} @endif">{{$menu->menu_title}}</a>
+                                    @if($menu->children->count()>0)
+                                    <ul class="dropdown">
+                                        @foreach($menu->children as $child)
+                                        <li><a href="@if($child->page_type=='page'){{url($menu->page->slug.'/'.$child->page->slug)}} @else {{url($menu->slug.'/'.$child->slug)}} @endif">{{$child->menu_title}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </li>
+                                @endforeach
+
+                                {{--<li><a href="/produkte">Produkte</a></li>
 
                                 <li class="drop"><a href="/inspiration">Inspirationen</a>
                                     <ul class="dropdown">
@@ -139,7 +153,8 @@
                                 <li><a href="#">Videos</a></li>
                                 <li><a href="#">Prospekte</a></li>
                                 <li><a href="#">Bilder Von Kunden</a></li>
-                                <!-- <li><a href="#">Blog</a></li>                                    -->
+                                <!-- <li><a href="#">Blog</a></li>   -->
+                                --}}
                             </ul>
                         </nav>
 

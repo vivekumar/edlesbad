@@ -17,7 +17,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{route('productimage.update', $product_image[0]->id)}}" method="post">
+            <form action="{{route('productimage.update', $product_image[0]->id)}}" method="post" enctype="multipart/form-data">
 
               <input type="hidden" name="_method" value="PUT">
               @csrf

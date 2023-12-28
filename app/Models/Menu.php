@@ -22,6 +22,10 @@ class Menu extends Model
 
     public static function tree()
     {
-        return static::with(implode('.', array_fill(0, 100, 'children')))->where('parent_id', '=', '0')->orderBy('sort_order')->where(['type'=>'header','status'=>1])->get();
+        return static::with(implode('.', array_fill(0, 100, 'children')))->where('parent_id', '=', '0')->orderBy('sort_order')->where(['type' => 'header', 'status' => 1])->get();
+    }
+    public function page()
+    {
+        return $this->hasOne('App\Models\Page', 'id', 'page_id')->select(['id', 'title', 'slug']);
     }
 }

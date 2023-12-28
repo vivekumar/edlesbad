@@ -162,7 +162,7 @@ Route::middleware([CheckAdminLog::class])->group(function () {
         Route::get('/', [ProductImageController::class, 'index'])->name('productimage.index');
         Route::get('create', [ProductImageController::class, 'create'])->name('productimage.create');
         Route::post('save', [ProductImageController::class, 'store'])->name('productimage.store');
-        Route::post('edit/{productimage}', [ProductImageController::class, 'store'])->name('productimage.store');
+        //Route::post('edit/{productimage}', [ProductImageController::class, 'store'])->name('productimage.store');
 
         Route::get('edit/{id}', [ProductImageController::class, 'edit'])->name('productimage.edit');
         Route::put('update/{id}', [ProductImageController::class, 'update'])->name('productimage.update');

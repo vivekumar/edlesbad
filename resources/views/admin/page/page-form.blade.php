@@ -74,11 +74,11 @@
                                             <div class="col-xxl-6 col-md-6">
                                                 <div>
                                                     <label for="image" class="form-label">Image Preview</label>
-                                            @if(file_exists(public_path().'/uploads/pages/'.$page->image) && !empty($page->image))
-											<img src="{{ URL::asset('uploads/pages/'.$page->image) }}" height="100px; width:100px;">
-											@else
-											<img src="{{ URL::asset('admin/images/default.jpg') }}" height="100px; width:100px;">
-											@endif
+                                                    @if(file_exists(public_path().'/uploads/pages/'.$page->image) && !empty($page->image))
+                                                    <img src="{{ URL::asset('uploads/pages/'.$page->image) }}" height="100px; width:100px;">
+                                                    @else
+                                                    <img src="{{ URL::asset('admin/images/default.jpg') }}" height="100px; width:100px;">
+                                                    @endif
 
                                                 </div>
                                                 @error('image')
@@ -90,7 +90,7 @@
                                             <div class="col-xxl-12 col-md-12">
                                                 <div>
                                                     <label for="descriptions" class="form-label">Description</label>
-                                                   <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                    <textarea class="form-control" name="descriptions">{{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
                                                 </div>
                                                 @error('description')
                                                 <span class="text-danger">{{$message}}</span>
@@ -157,7 +157,7 @@
 <!-- END layout-wrapper -->
 
 <script>
-CKEDITOR.replace( 'descriptions' );
+    CKEDITOR.replace('descriptions');
 </script>
 
 @stop

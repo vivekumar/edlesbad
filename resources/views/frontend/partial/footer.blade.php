@@ -54,7 +54,7 @@
                     <h2 class="title__line--2">information</h2>
                     <div class="ft__inner">
                       <ul class="ft__list">
-                        <li><a href="ueber-uns-edlesbad.php">About us</a></li>
+                        <li><a href="ueber-uns-edlesbad">About us</a></li>
                         <li><a href="#">Videos</a></li>
                         <li><a href="#">Prospekte</a></li>
                         <li><a href="#">Bilder</a></li>

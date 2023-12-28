@@ -42,38 +42,24 @@
                                     @csrf
                                     <div class="row gy-4">
 
-                                        <div class="col-xxl-6 col-md-6">
+                                        <div class="col-xxl-3 col-md-3">
                                             <div>
-                                                <label for="type" class="form-label">Type</label>
+                                                <label for="type" class="form-label">Menu Type</label>
                                                 <select name="type" class="form-control">
                                                     <option value="" @if(isset($menu) && $menu->type == '') {{"selected"}} @endif>--Select--</option>
                                                     <option value="header" @if(isset($menu) && $menu->type == 'header') {{"selected"}} @endif>Header</option>
                                                     <option value="footer" @if(isset($menu) && $menu->type == 'footer') {{"selected"}} @endif>Footer</option>
                                                 </select>
-
                                                 @error('type')
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
-
                                             </div>
                                         </div>
-
-
-                                        <div class="col-xxl-6 col-md-6">
-                                            <div>
-                                                <label for="title" class="form-label">Title</label>
-                                                <input type="text" class="form-control" name="menu_title" value="{{ isset($menu)?$menu->menu_title:old('menu_title') }}">
-                                            </div>
-                                            @error('menu_title')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-xxl-6 col-md-6">
+                                        <div class="col-xxl-3 col-md-3">
                                             <div>
                                                 <label for="name" class="form-label">Parent Menu</label>
                                                 <select name="parent_id" class="form-control">
-                                                    <option value="0" @if(isset($menu) && $menu->parent_id == 0) {{"selected"}} @endif>--Select--</option>
+                                                    <option value="0" @if(isset($menu) && $menu->parent_id == 0) {{"selected"}} @endif>None</option>
                                                     @foreach($parent_menu as $pmenu)
                                                     <option value="{{$pmenu->id}}" @if(isset($menu) && $menu->parent_id == $pmenu->id) {{"selected"}} @endif>{{$pmenu->menu_title}}</option>
                                                     @endforeach
@@ -85,19 +71,7 @@
 
                                             </div>
                                         </div>
-
-                                        <div class="col-xxl-6 col-md-6">
-                                            <div>
-                                                <label for="slug" class="form-label">Slug</label>
-                                                <input type="text" class="form-control" name="slug" value="{{ isset($menu)?$menu->slug:old('slug') }}">
-                                            </div>
-                                            @error('slug')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-
-
-                                        <div class="col-xxl-6 col-md-6">
+                                        <div class="col-xxl-3 col-md-3">
                                             <div>
                                                 <label for="sort_order" class="form-label">Order</label>
                                                 <input type="text" class="form-control" name="sort_order" value="{{ isset($menu)?$menu->sort_order:old('sort_order') }}">
@@ -110,7 +84,7 @@
 
 
 
-                                        <div class="col-xxl-6 col-md-6">
+                                        <div class="col-xxl-3 col-md-3">
                                             <div>
                                                 <label for="name" class="form-label">Status</label>
                                                 <select name="status" class="form-control">
@@ -125,6 +99,69 @@
 
                                             </div>
                                         </div>
+
+
+
+                                    </div>
+                                    <div class="row gy-4 mt-1">
+                                        <div class="col-xxl-4 col-md-4">
+                                            <div>
+                                                <label for="title" class="form-label">Title</label>
+                                                <input type="text" class="form-control" name="menu_title" value="{{ isset($menu)?$menu->menu_title:old('menu_title') }}">
+                                            </div>
+                                            @error('menu_title')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-xxl-4 col-md-4">
+                                            <div>
+                                                <label for="page_type" class="form-label">Page Type</label>
+                                                <select name="page_type" class="form-control" onchange="showPage(this)">
+                                                    <option value="page" @if(isset($menu) && $menu->page_type == 'page') {{"selected"}} @endif>Page</option>
+                                                    <option value="custom" @if(isset($menu) && $menu->page_type == 'custom') {{"selected"}} @endif>Custom url</option>
+                                                </select>
+                                                @error('page_type')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-md-4 page" style="display: 
+                                            @if(isset($menu)) 
+                                                @if($menu->page_type=='page')
+                                                    block 
+                                                @else
+                                                    none
+                                                @endif
+
+                                            @else block @endif
+                                        
+                                        ">
+                                            <div>
+                                                <label for="page_id" class="form-label">Page</label>
+                                                <select name="page_id" class="form-control">
+                                                    <option value="0" @if(isset($menu) && $menu->page_id == 0) {{"selected"}} @endif>None</option>
+                                                    @foreach($pages as $page)
+                                                    <option value="{{$page->id}}" @if(isset($menu) && $menu->page_id == $page->id) {{"selected"}} @endif>{{$page->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @error('page_id')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xxl-4 col-md-4 slug" style="display: @if(isset($menu)&&$menu->page_type=='custom') block @else none @endif;">
+                                            <div>
+                                                <label for="slug" class="form-label">Slug</label>
+                                                <input type="text" class="form-control" name="slug" value="{{ isset($menu)?$menu->slug:old('slug') }}">
+                                            </div>
+                                            @error('slug')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+
+
 
 
 
@@ -173,4 +210,19 @@
 
 
 
-@stop
+@endsection
+@section('js')
+<script>
+    function showPage(option) {
+        let page_type = jQuery(option).val();
+        if (page_type === 'page') {
+            jQuery('.page').show();
+            jQuery('.slug').hide();
+        } else {
+            jQuery('.page').hide();
+            jQuery('.slug').show();
+        }
+
+    }
+</script>
+@endsection

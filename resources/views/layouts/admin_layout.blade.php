@@ -2,6 +2,7 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
 @include('includes.admin.head')
 
+
 <body>
 
     <div id="layout-wrapper">
@@ -10,6 +11,7 @@
         @yield('content')
 
         @include('includes.admin.extra')
+        @yield('js')
     </div>
 </body>
 
