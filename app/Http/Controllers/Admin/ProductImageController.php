@@ -55,15 +55,15 @@ class ProductImageController extends Controller
             'product_image' => 'required|mimes:jpeg,jpg,png,webp',
             //'product_ordering'=>'required|unique:product_images,image_ordering',
         ], [
-            // 'product_image_name.required'=>'Product image name is required',
-            // 'product_image.required'=>'Product image is required',
-            // 'product_image.mimes'=>'Image should be jpeg, jpg, png, webp',
+            'product_image_name.required' => 'Product image name is required',
+            'product_image.required' => 'Product image is required',
+            'product_image.mimes' => 'Image should be jpeg, jpg, png, webp',
             // 'product_ordering.required'=>'Ordering is required',
             // 'product_ordering.unique'=>'Ordering already used',
 
-            'product_image_name.required' => trans('backendmsg.proimage_controller_msg_01'),
-            'product_image.required' => trans('backendmsg.proimage_controller_msg_02'),
-            'product_image.mimes' => trans('backendmsg.proimage_controller_msg_03'),
+            // 'product_image_name.required' => trans('backendmsg.proimage_controller_msg_01'),
+            // 'product_image.required' => trans('backendmsg.proimage_controller_msg_02'),
+            // 'product_image.mimes' => trans('backendmsg.proimage_controller_msg_03'),
         ]);
         $model = new ProductImage;
         $model->image_name = $request->input('product_image_name');
@@ -88,9 +88,8 @@ class ProductImageController extends Controller
             $name = $request->product_image->getClientOriginalName();
             $filename =  date('ymdgis') .  Helper::cleanString($name);
             $request->product_image->move($file_path, $filename);
-            $model->image = $filename;
+            $model->image = '/storage/products/' . $filename;
         }
-
 
         $model->save();
 
@@ -154,7 +153,7 @@ class ProductImageController extends Controller
             $name = $request->product_image->getClientOriginalName();
             $filename =  date('ymdgis') .  Helper::cleanString($name);
             $request->product_image->move($file_path, $filename);
-            $model->image = $filename;
+            $model->image = '/storage/products/' . $filename;
         }
 
         $model->save();
@@ -173,8 +172,8 @@ class ProductImageController extends Controller
     {
         $model = ProductImage::where('id', '=', $id)->first();
         if ($model->image != "") {
-            if (Storage::exists('public/products/' . $model->image)) {
-                Storage::delete('public/products/' . $model->image);
+            if (Storage::exists('storage/products/' . $model->image)) {
+                Storage::delete('storage/products/' . $model->image);
             }
         }
         $model->delete();

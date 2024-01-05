@@ -21,17 +21,15 @@ use App\Http\Controllers\UserController;
 //     return view('frontend.index');
 // });
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/dashbaord', [HomeController::class, 'dashbaord'])->name('dashbaord');
-Route::get('/admin', [HomeController::class, 'index'])->name('home');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+//Route::get('/login', [LoginController::class, 'login'])->name('login');
+//Route::get('/dashbaord', [HomeController::class, 'dashbaord'])->name('dashbaord');
+Route::get('/admin', [HomeController::class, 'index']);
+//Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
-Route::get('/inspiration', [HomeController::class, 'inspiration'])->name('inspiration');
-Route::get('/kategorien', [HomeController::class, 'kategorien'])->name('kategorien');
-Route::get('/produkte', [HomeController::class, 'product'])->name('product');
+//Route::get('/kategorien', [HomeController::class, 'kategorien'])->name('kategorien');
+//Route::get('/produkte', [HomeController::class, 'product'])->name('product');
 
-Route::get('/ueber-uns-edlesbad', [HomeController::class, 'ueberUnsEdlesbad'])->name('ueberUnsEdlesbad');
-Route::get('/unsere-lieferanten', [HomeController::class, 'unsereLieferanten'])->name('unsereLieferanten');
+
 //Route::post('/admin', [LoginController::class, 'checkAuth'])->name('login');
 Route::post('user-auth/{type}', [UserController::class, 'userAuth']);
 

@@ -9,11 +9,8 @@
                   <div class="footer">
                     <!-- <h2 class="title__line--2">ABOUT US</h2> -->
                     <div class="ft__details">
-                      <p>Edles Bad GmbH <br>
 
-                        Silostrasse 9 <br>
-
-                        CH-5606 Dintikon / AG</p>
+                      <p>{{App\Helpers\Helper::getSettingData('site_address')}}</p>
                     </div>
                     <!-- <div class="ft__details">
                                     <p>Edles Bad GmbH is a full-service supplier and offers all the products that make a beautiful bathroom.</p>
@@ -38,13 +35,8 @@
                 <!-- Start Single Footer Widget -->
                 <div class="col-lg-3 col-md-6 xmt-40 smt-40">
                   <div class="ft__details">
-                    <p>
-                      T ++41 (0)56 511 23 20 <br>
-
-                      F ++41 (0)56 511 23 21 <br>
-
-                      info@edles-bad.ch
-                    </p>
+                    <p>{!!App\Helpers\Helper::getSettingData('site_phone')!!}</p>
+                    <p>{!!App\Helpers\Helper::getSettingData('site_email')!!}</p>
                   </div>
                 </div>
                 <!-- End Single Footer Widget -->
@@ -54,11 +46,9 @@
                     <h2 class="title__line--2">information</h2>
                     <div class="ft__inner">
                       <ul class="ft__list">
-                        <li><a href="ueber-uns-edlesbad">About us</a></li>
-                        <li><a href="#">Videos</a></li>
-                        <li><a href="#">Prospekte</a></li>
-                        <li><a href="#">Bilder</a></li>
-                        <li><a href="blog">Blog</a></li>
+                        @foreach($footerMenu as $menu)
+                        <li><a href="@if($menu->page_type=='page'){{url($menu->page->slug)}} @else {{url($menu->slug)}} @endif">{{$menu->menu_title}}</a></li>
+                        @endforeach
                       </ul>
                     </div>
                   </div>

@@ -55,14 +55,34 @@
         </div>
         <div class="row product-list_area mt--30">
             <!-- Start Single Category -->
+            @foreach($latestProduct as $lproduct)
+            <div class="col-xl-3 col-md-4">
+                <div class="category">
+                    <div class="ht__cat__thumb">
+                        <a href="{{url($lproduct->slug)}}">
+                            @if($lproduct->thumbnail)
+                            <img src="{{asset('storage/products/'.$lproduct->thumbnail)}}" alt="{{$lproduct->title}}">
+                            @else
+                            <img src="{{asset('images/product/1.jpg')}}" alt="product images">
+                            @endif
+                        </a>
+                    </div>
+                    <div class="fr__product__inner  newarrreadmore">
+                        <h4><a href="{{url($lproduct->slug)}}">{{$lproduct->title}}</a></h4>
+
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            {{--
             <div class="col-xl-3 col-md-4">
                 <div class="category">
                     <div class="ht__cat__thumb">
                         <a href="#">
-                            <img src="images/product/1.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <!-- <div class="fr__hover__info">
+                            <img src="{{URL::asset('images/product/1.jpg')}}" alt="product images">
+            </a>
+        </div>
+        <!-- <div class="fr__hover__info">
                                 <ul class="product__action">
                                     <li><a href="#"><i class="icon-heart icons"></i></a></li>
 
@@ -71,120 +91,62 @@
                                     <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
                                 </ul>
                             </div> -->
-                    <div class="fr__product__inner newarrreadmore">
-                        <h4><a href="#">Largest Water Pot</a></h4>
+        <div class="fr__product__inner newarrreadmore">
+            <h4><a href="#">Largest Water Pot</a></h4>
 
-                        <!-- <ul class="fr__pro__prize">
+            <!-- <ul class="fr__pro__prize">
                                     <li class="old__prize">$30.3</li>
                                     <li>$25.9</li>
                                 </ul> -->
-                    </div>
-                </div>
+        </div>
+    </div>
+    </div>
+    <!-- End Single Category -->
+    <!-- Start Single Category -->
+
+    <div class="col-xl-3 col-md-4">
+        <div class="category">
+            <div class="ht__cat__thumb">
+                <a href="#">
+                    <img src="{{URL::asset('images/product/6.jpg')}}" alt="product images">
+                </a>
             </div>
-            <!-- End Single Category -->
-            <!-- Start Single Category -->
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/2.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">Bathtub mixer from the floor</a></h4>
+            <div class="fr__product__inner  newarrreadmore">
+                <h4><a href="#">kuchenmischer</a></h4>
 
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Category -->
-            <!-- Start Single Category -->
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/3.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">kuchenmischer</a></h4>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Category -->
-            <!-- Start Single Category -->
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/4.jpg" alt="product images">
-                        </a>
-                    </div>
-
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">Washing troughs/spouts</a></h4>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Category -->
-
-            <!-- End Single Category -->
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/5.jpg" alt="product images">
-                        </a>
-                    </div>
-
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">Washing troughs/spouts</a></h4>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/6.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">kuchenmischer</a></h4>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/7.jpg" alt="product images">
-                        </a>
-                    </div>
-
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">Washing troughs/spouts</a></h4>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/8.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__product__inner  newarrreadmore">
-                        <h4><a href="#">kuchenmischer</a></h4>
-
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
+    <div class="col-xl-3 col-md-4">
+        <div class="category">
+            <div class="ht__cat__thumb">
+                <a href="#">
+                    <img src="{{URL::asset('images/product/7.jpg')}}" alt="product images">
+                </a>
+            </div>
+
+            <div class="fr__product__inner  newarrreadmore">
+                <h4><a href="#">Washing troughs/spouts</a></h4>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4">
+        <div class="category">
+            <div class="ht__cat__thumb">
+                <a href="#">
+                    <img src="{{URL::asset('images/product/8.jpg')}}" alt="product images">
+                </a>
+            </div>
+            <div class="fr__product__inner  newarrreadmore">
+                <h4><a href="#">kuchenmischer</a></h4>
+
+            </div>
+        </div>
+    </div>
+    --}}
+
+    </div>
     </div>
 </section>
 <!-- End Category Area -->
@@ -202,7 +164,7 @@
             <div class="col-md-6">
                 <div class="prize__inner">
                     <div class="prize__thumb">
-                        <img src="images/banner/big-img/1.png" alt="banner images">
+                        <img src="{{URL::asset('images/banner/big-img/1.png')}}" alt="banner images">
                     </div>
                     <div class="banner__info">
                         <div class="pointer__tooltip pointer--3 align-left">
@@ -253,115 +215,65 @@
             </div>
         </div>
         <div class="product__wrap row">
-            <!-- Start Single Category -->
+
+            @foreach($bestSeller as $product)
+            <!-- Start Single Product -->
             <div class="col-xl-3 col-md-4">
                 <div class="category">
                     <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/9.jpg" alt="product images">
+                        <a href="{{url($product->slug)}}">
+                            @if($product->thumbnail)
+                            <img src="{{asset('storage/products/'.$product->thumbnail)}}" alt="{{$product->title}}">
+                            @else
+                            <img src="{{asset('images/product/1.jpg')}}" alt="product images">
+                            @endif
                         </a>
                     </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="#"><i class="icon-heart icons"></i></a></li>
 
-                            <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
                     <div class="fr__product__inner">
-                        <h4><a href="#">Special Wood Basket</a></h4>
+                        <h4><a href="{{url($product->slug)}}">{{$product->title}} </a></h4>
                         <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
+                            @if($product->sell_price && $product->price>$product->sell_price)
+                            <li class="old__prize"><strike>CHF {{$product->price}}</strike></li>
+                            <li>CHF {{$product->sell_price}}</li>
+                            @else
+                            <li>CHF {{$product->price}}</li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- End Single Category -->
-            <!-- Start Single Category -->
-            <div class="col-xl-3 col-md-4">
+            <!-- End Single Product -->
+            @endforeach
+            {{--<div class="col-xl-3 col-md-4">
                 <div class="category">
                     <div class="ht__cat__thumb">
                         <a href="#">
-                            <img src="images/product/10.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="#"><i class="icon-heart icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="fr__product__inner">
-                        <h4><a href="#">voluptatem accusantium</a></h4>
-                        <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Category -->
-            <!-- Start Single Category -->
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/11.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="#"><i class="icon-heart icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="fr__product__inner">
-                        <h4><a href="#">Kuchenmischer</a></h4>
-                        <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Category -->
-            <!-- Start Single Category -->
-            <div class="col-xl-3 col-md-4">
-                <div class="category">
-                    <div class="ht__cat__thumb">
-                        <a href="#">
-                            <img src="images/product/12.jpg" alt="product images">
-                        </a>
-                    </div>
-                    <div class="fr__hover__info">
-                        <ul class="product__action">
-                            <li><a href="#"><i class="icon-heart icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="fr__product__inner">
-                        <h4><a href="#">Washing Troughs/Spouts </a></h4>
-                        <ul class="fr__pro__prize">
-                            <li class="old__prize">$30.3</li>
-                            <li>$25.9</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Category -->
+                            <img src="{{URL::asset('images/product/9.jpg')}}" alt="product images">
+            </a>
         </div>
+        <div class="fr__hover__info">
+            <ul class="product__action">
+                <li><a href="#"><i class="icon-heart icons"></i></a></li>
+
+                <li><a href="#"><i class="icon-handbag icons"></i></a></li>
+
+                <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
+            </ul>
+        </div>
+        <div class="fr__product__inner">
+            <h4><a href="#">Special Wood Basket</a></h4>
+            <ul class="fr__pro__prize">
+                <li class="old__prize">$30.3</li>
+                <li>$25.9</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    --}}
+    <!-- End Single Category -->
+
+    </div>
     </div>
 </section>
 <!-- End Product Area -->
@@ -376,16 +288,21 @@
             </div>
         </div>
         <div class="row mt--20">
+            @foreach($topRated as $product)
             <!-- Start Single Product -->
             <div class="col-xl-4 col-md-6">
                 <div class="htc__best__product">
                     <div class="htc__best__pro__thumb">
-                        <a href="#">
-                            <img src="images/product/13.jpg" alt="small product">
+                        <a href="{{url($product->slug)}}">
+                            @if($product->thumbnail)
+                            <img src="{{asset('storage/products/'.$product->thumbnail)}}" alt="{{$product->title}}">
+                            @else
+                            <img src="{{asset('images/product/1.jpg')}}" alt="product images">
+                            @endif
                         </a>
                     </div>
                     <div class="htc__best__product__details">
-                        <h2><a href="#">Special Wood Basket</a></h2>
+                        <h2><a href="{{url($product->slug)}}">{{$product->title}} </a></h2>
                         <ul class="rating">
                             <li><i class="icon-star icons"></i></li>
                             <li><i class="icon-star icons"></i></li>
@@ -394,84 +311,27 @@
                             <li class="old"><i class="icon-star icons"></i></li>
                         </ul>
                         <ul class="top__pro__prize">
-                            <li class="old__prize">$82.5</li>
-                            <li>$75.2</li>
+                            @if($product->sell_price && $product->price>$product->sell_price)
+                            <li class="old__prize"><strike>CHF {{$product->price}}</strike></li>
+                            <li>CHF {{$product->sell_price}}</li>
+                            @else
+                            <li>CHF {{$product->price}}</li>
+                            @endif
                         </ul>
-                        <div class="best__product__action">
+                        {{--<div class="best__product__action">
                             <ul class="product__action--dft">
                                 <li><a href="#"><i class="icon-heart icons"></i></a></li>
                                 <li><a href="#"><i class="icon-handbag icons"></i></a></li>
                                 <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
                             </ul>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>
             <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="col-xl-4 col-md-6">
-                <div class="htc__best__product">
-                    <div class="htc__best__pro__thumb">
-                        <a href="#">
-                            <img src="images/product/14.jpg" alt="small product">
-                        </a>
-                    </div>
-                    <div class="htc__best__product__details">
-                        <h2><a href="#">Voluptatem Accusantium</a></h2>
-                        <ul class="rating">
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                        </ul>
-                        <ul class="top__pro__prize">
-                            <li class="old__prize">$82.5</li>
-                            <li>$75.2</li>
-                        </ul>
-                        <div class="best__product__action">
-                            <ul class="product__action--dft">
-                                <li><a href="#"><i class="icon-heart icons"></i></a></li>
-                                <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-                                <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Product -->
-            <!-- Start Single Product -->
-            <div class="col-xl-4 col-md-6">
-                <div class="htc__best__product">
-                    <div class="htc__best__pro__thumb">
-                        <a href="#">
-                            <img src="images/product/15.jpg" alt="small product">
-                        </a>
-                    </div>
-                    <div class="htc__best__product__details">
-                        <h2><a href="#">Kuchenmischer</a></h2>
-                        <ul class="rating">
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                        </ul>
-                        <ul class="top__pro__prize">
-                            <li class="old__prize">$82.5</li>
-                            <li>$75.2</li>
-                        </ul>
-                        <div class="best__product__action">
-                            <ul class="product__action--dft">
-                                <li><a href="#"><i class="icon-heart icons"></i></a></li>
-                                <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-                                <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Product -->
+            @endforeach
+
+
         </div>
     </div>
 </section>

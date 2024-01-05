@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use App\Models\Menu;
+use App\Models\Setting;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,9 +27,10 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
 
         $menus = Menu::orderBy('sort_order', 'asc')->where(['type' => 'header', 'parent_id' => 0])->with('page', 'children')->get();
-        //dd($menus);
-        View::composer('*', function ($view) use ($menus) {
-            $view->with(['mainMenu' => $menus]);
+        $footer_menus = Menu::orderBy('sort_order', 'asc')->where(['type' => 'footer', 'parent_id' => 0])->with('page')->get();
+
+        View::composer('*', function ($view) use ($menus, $footer_menus) {
+            $view->with(['mainMenu' => $menus, 'footerMenu' => $footer_menus]);
         });
     }
 }

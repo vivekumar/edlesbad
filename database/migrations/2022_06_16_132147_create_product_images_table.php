@@ -20,7 +20,7 @@ class CreateProductImagesTable extends Migration
             $table->foreignId('product_id');
             $table->enum('images_status', [0, 1])->default(1);
             $table->timestamps();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            //$table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

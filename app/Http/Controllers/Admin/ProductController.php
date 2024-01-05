@@ -52,8 +52,15 @@ class ProductController extends Controller
             $product->sell_price = $request->sell_price;
             $product->description = $request->descriptions;
             $product->content = $request->content;
+            $product->technical_data = $request->technical_data;
+            $product->top_rated = $request->top_rated;
+            $product->best_seller = $request->best_seller;
             $product->sku = $request->sku;
             $product->status = $request->status;
+
+            $product->meta_title = $request->meta_title;
+            $product->meta_keyword = $request->meta_keyword;
+            $product->meta_description = $request->meta_description;
 
 
             if ($request->hasFile('thumbnail')) {

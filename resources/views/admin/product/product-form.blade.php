@@ -58,7 +58,7 @@
                                                 <div class="col-xxl-12 col-md-12">
                                                     <div>
                                                         <label for="descriptions" class="form-label">Short Description</label>
-                                                        <textarea class="form-control" name="descriptions">{{ isset($product)?$product->description:old('description') }}</textarea>
+                                                        <textarea class="form-control summernote" name="descriptions">{{ isset($product)?$product->description:old('description') }}</textarea>
                                                     </div>
                                                     @error('description')
                                                     <span class="text-danger">{{$message}}</span>
@@ -67,14 +67,22 @@
                                                 <div class="col-xxl-12 col-md-12">
                                                     <div>
                                                         <label for="descriptions" class="form-label">Description</label>
-                                                        <textarea class="form-control" name="content">{{ isset($product)?$product->content:old('content') }}</textarea>
+                                                        <textarea class="form-control summernote" name="content">{{ isset($product)?$product->content:old('content') }}</textarea>
                                                     </div>
                                                     @error('description')
                                                     <span class="text-danger">{{$message}}</span>
                                                     @enderror
                                                 </div>
 
-
+                                                <div class="col-xxl-12 col-md-12">
+                                                    <div>
+                                                        <label for="descriptions" class="form-label">TECHNISCHE DATEN</label>
+                                                        <textarea class="form-control summernote" name="technical_data">{{ isset($product)?$product->technical_data:old('technical_data') }}</textarea>
+                                                    </div>
+                                                    @error('technical_data')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
 
                                                 <!--end col-->
 
@@ -143,6 +151,31 @@
                                                 <img src="{{url('storage/products/'.$product->thumbnail)}}" style="max-width:100%; height:150px">
                                                 @endif
                                             </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="best_seller" id="BestSeller" {{ isset($product)?$product->best_seller==1?'checked':'':'' }}>
+                                                    <label class="form-check-label" for="BestSeller">
+                                                        Best Seller
+                                                    </label>
+                                                </div>
+                                                @error('price')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="top_rated" id="TopRated" {{ isset($product)?$product->top_rated==1?'checked':'':'' }}>
+                                                    <label class="form-check-label" for="TopRated">
+                                                        Top Rated
+                                                    </label>
+                                                </div>
+                                                @error('price')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+                                            <hr>
                                             <div class="form-group">
                                                 <div>
                                                     <label for="name" class="form-label">Status</label>
@@ -158,6 +191,41 @@
 
                                                 </div>
                                             </div>
+
+                                            <hr>
+                                            <h4>Meta Info</h4>
+                                            <hr>
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="meta_title" class="form-label">Meta Title</label>
+                                                    <input type="text" class="form-control" name="meta_title" value="{{ isset($product)?$product->meta_title:old('meta_title') }}">
+                                                </div>
+                                                @error('meta_title')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="meta_keyword" class="form-label">Meta Keyword</label>
+                                                    <textarea class="form-control" name="meta_keyword"> {{ isset($product)?$product->meta_keyword:old('meta_keyword') }}</textarea>
+                                                </div>
+                                                @error('meta_keyword')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div>
+                                                    <label for="meta_description" class="form-label">Meta Description</label>
+                                                    <textarea class="form-control" name="meta_description"> {{ isset($product)?$product->meta_description:old('meta_description') }}</textarea>
+                                                </div>
+                                                @error('meta_description')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
+
+
 
 
                                         </div>
@@ -199,10 +267,18 @@
 
 </div>
 <!-- END layout-wrapper -->
+
+
+@endsection
+@section('js')
 <script>
-    CKEDITOR.replace('descriptions');
-    CKEDITOR.replace('content');
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 300, //set editable area's height
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+    });
 </script>
-
-
-@stop
+@endsection

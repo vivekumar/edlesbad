@@ -9,7 +9,7 @@ use App\Models\Page;
 use App\Models\PageSection;
 use Exception;
 use File;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CmsController extends Controller
 {

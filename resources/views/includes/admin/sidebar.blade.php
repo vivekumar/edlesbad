@@ -209,7 +209,7 @@
 
                         </ul>
                     </div>
-                </li>
+                </li>-->
 
 
 
@@ -232,7 +232,26 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#pdfData" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="partnerData">
+                        <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-authentication">Manage Prospekte</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="pdfData">
+                        <ul class="nav nav-sm flex-column">
 
+                            <li class="nav-item">
+                                <a href="{{url('admin/pdf/create')}}" class="nav-link"> Create Prospekte </a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a href="{{url('admin/pdf')}}" class="nav-link"> Prospekte List </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <!--
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{url('admin/enquiry')}}">

@@ -1,7 +1,7 @@
 @extends('frontend/layout/layout')
 @section('page_title', 'Admin Dashboard')
 @section('container')
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{url('/images/bg/4.jpg')}}) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -124,6 +124,7 @@
                 <ul class="nav pro__details__tab" role="tablist">
                     <li role="presentation" class="description"><a class="active" href="#description" role="tab" data-toggle="tab">Beschreibung</a></li>
                     <li role="presentation" class="review"><a href="#review" role="tab" data-toggle="tab">Downloads</a></li>
+                    <li role="presentation" class="technische"><a href="#technische" role="tab" data-toggle="tab">TECHNISCHE DATEN</a></li>
                     <li role="presentation" class="shipping"><a href="#shipping" role="tab" data-toggle="tab">Zubehör</a></li>
                 </ul>
                 <!-- End List And Grid View -->
@@ -144,21 +145,25 @@
                         <div class="pro__tab__content__inner">
 
                             <h4 class="ht__pro__title">Download</h4>
+                            @foreach($product->pdfs as $pdf)
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
                                     <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z" />
-                                </svg> Montageanleitung Badu</a>
+                                </svg> {{$pdf->pdf_name}}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <!-- End Single Content -->
+                    <!-- Start Single Content -->
+                    <div role="tabpanel" id="technische" class="pro__single__content tab-pane fade">
+                        <div class="pro__tab__content__inner">
+                            {!!$product->technical_data!!}
                         </div>
                     </div>
                     <!-- End Single Content -->
                     <!-- Start Single Content -->
                     <div role="tabpanel" id="shipping" class="pro__single__content tab-pane fade">
                         <div class="pro__tab__content__inner">
-                            <p>Formfitting clothing is all about a sweet spot. That elusive place where an item is tight but not clingy, sexy but not cloying, cool but not over the top. Alexandra Alvarez’s label, Alix, hits that mark with its range of comfortable, minimal, and neutral-hued bodysuits.</p>
-                            <h4 class="ht__pro__title">Description</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                            <h4 class="ht__pro__title">Standard Featured</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>
+
                         </div>
                     </div>
                     <!-- End Single Content -->

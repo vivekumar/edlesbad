@@ -13,6 +13,7 @@ use App\Models\Setting;
 use App\Models\Menu;
 use App\Models\Banner;
 use App\Models\Blog;
+use App\Models\Partner;
 use Illuminate\Support\Facades\Http;
 use Auth;
 

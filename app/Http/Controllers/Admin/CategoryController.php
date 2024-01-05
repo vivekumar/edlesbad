@@ -48,6 +48,12 @@ class CategoryController extends Controller
             $category->title = $request->title;
             $category->status = $request->status;
             $category->slug = Str::slug($request->title, '-');
+
+            $category->meta_title = $request->meta_title;
+            $category->meta_keyword = $request->meta_keyword;
+            $category->meta_description = $request->meta_description;
+
+
             if ($request->hasFile('image')) {
                 $name = $request->image->getClientOriginalName();
                 $filename =  date('ymdgis') . $name;

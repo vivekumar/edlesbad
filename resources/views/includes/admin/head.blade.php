@@ -19,8 +19,8 @@
     <!-- custom Css-->
     <link href="{{URL::asset('admin/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
-
+    <!--<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>-->
+    <link href="{{URL::asset('admin/libs/summernote/summernote.min.css')}}" rel="stylesheet" type="text/css" />
 
 
 </head>

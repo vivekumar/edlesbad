@@ -64,12 +64,12 @@
             <!-- Start Single Product -->
             <div class="htc__best__product">
                 <div class="htc__best__pro__thumb">
-                    <a href="produkte-details.php">
-                        <img src="/images/product/1.jpg" width="90" alt="small product">
+                    <a href="#">
+                        <img src="{{url('/images/product/1.jpg')}}" width="90" alt="small product">
                     </a>
                 </div>
                 <div class="htc__best__product__details">
-                    <h2><a href="produkte-details.php">Largest Water Pot</a></h2>
+                    <h2><a href="#">Largest Water Pot</a></h2>
                     <!-- <ul class="rating">
                                                 <li><i class="icon-star icons"></i></li>
                                                 <li><i class="icon-star icons"></i></li>
@@ -87,12 +87,12 @@
             <!-- Start Single Product -->
             <div class="htc__best__product">
                 <div class="htc__best__pro__thumb">
-                    <a href="produkte-details.php">
-                        <img src="/images/product/2.jpg" width="90" alt="small product">
+                    <a href="#">
+                        <img src="{{url('/images/product/2.jpg')}}" width="90" alt="small product">
                     </a>
                 </div>
                 <div class="htc__best__product__details">
-                    <h2><a href="produkte-details.php">Largest Water Pot</a></h2>
+                    <h2><a href="#">Largest Water Pot</a></h2>
                     <!-- <ul class="rating">
                                                 <li><i class="icon-star icons"></i></li>
                                                 <li><i class="icon-star icons"></i></li>
@@ -110,12 +110,12 @@
             <!-- Start Single Product -->
             <div class="htc__best__product">
                 <div class="htc__best__pro__thumb">
-                    <a href="produkte-details">
-                        <img src="/images/product/3.jpg" width="90" alt="small product">
+                    <a href="#">
+                        <img src="{{url('/images/product/3.jpg')}}" width="90" alt="small product">
                     </a>
                 </div>
                 <div class="htc__best__product__details">
-                    <h2><a href="produkte-details">Largest Water Pot</a></h2>
+                    <h2><a href="#">Largest Water Pot</a></h2>
 
                     <ul class="pro__prize">
                         <li class="old__prize">$82.5</li>

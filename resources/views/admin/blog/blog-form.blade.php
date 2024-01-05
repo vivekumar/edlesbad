@@ -80,27 +80,27 @@
                                             </div>
 
                                             <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="short_desc" class="form-label">Short Description</label>
-                                                <textarea class="form-control" name="short_desc"> {{ isset($blog)?$blog->short_desc:old('short_desc') }}</textarea>
+                                                <div>
+                                                    <label for="short_desc" class="form-label">Short Description</label>
+                                                    <textarea class="form-control" name="short_desc"> {{ isset($blog)?$blog->short_desc:old('short_desc') }}</textarea>
+                                                </div>
+                                                @error('short_desc')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
-                                            @error('short_desc')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-                                            
-                                        <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="descriptions" class="form-label">Description</label>
-                                                <textarea class="form-control" name="descriptions"> {{ isset($blog)?$blog->descriptions:old('descriptions') }}</textarea>
+
+                                            <div class="col-xxl-12 col-md-12">
+                                                <div>
+                                                    <label for="descriptions" class="form-label">Description</label>
+                                                    <textarea class="form-control summernote" name="descriptions"> {{ isset($blog)?$blog->descriptions:old('descriptions') }}</textarea>
+                                                </div>
+                                                @error('descriptions')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
-                                            @error('descriptions')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
 
 
-                                        <div class="col-xxl-4 col-md-4">
+                                            <div class="col-xxl-4 col-md-4">
                                                 <div>
                                                     <label for="author" class="form-label">Author</label>
                                                     <input type="text" class="form-control" name="author" value="{{ isset($blog)?$blog->author:old('author') }}">
@@ -169,26 +169,26 @@
                                             </div>
 
                                             <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="meta_keyword" class="form-label">Meta Keyword</label>
-                                                <textarea class="form-control" name="meta_keyword"> {{ isset($blog)?$blog->meta_keyword:old('meta_keyword') }}</textarea>
-                                            </div>
-                                            @error('meta_keyword')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                <div>
+                                                    <label for="meta_keyword" class="form-label">Meta Keyword</label>
+                                                    <textarea class="form-control" name="meta_keyword"> {{ isset($blog)?$blog->meta_keyword:old('meta_keyword') }}</textarea>
+                                                </div>
+                                                @error('meta_keyword')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="col-xxl-12 col-md-12">
-                                            <div>
-                                                <label for="meta_description" class="form-label">Meta Description</label>
-                                                <textarea class="form-control" name="meta_description"> {{ isset($blog)?$blog->meta_description:old('meta_description') }}</textarea>
+                                                <div>
+                                                    <label for="meta_description" class="form-label">Meta Description</label>
+                                                    <textarea class="form-control" name="meta_description"> {{ isset($blog)?$blog->meta_description:old('meta_description') }}</textarea>
+                                                </div>
+                                                @error('meta_description')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
-                                            @error('meta_description')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
 
-                                        
+
 
 
                                             <!--end col-->
@@ -199,13 +199,13 @@
 
 
                                 </div>
-                                  <br>
+                                <br>
                                 <div class="row gy-4">
-                                <div class="col-xxl-4 col-md-4">
-                                <input type="hidden" name="old_image" value="{{ isset($blog)?$blog->image:old('old_image') }}">
-                                 <input type="hidden" name="blog_id" value="{{ isset($blog)?$blog->id:old('blog_id') }}">
-                                <input type="submit" class="btn btn-info" value="submit">
-                                </div>
+                                    <div class="col-xxl-4 col-md-4">
+                                        <input type="hidden" name="old_image" value="{{ isset($blog)?$blog->image:old('old_image') }}">
+                                        <input type="hidden" name="blog_id" value="{{ isset($blog)?$blog->id:old('blog_id') }}">
+                                        <input type="submit" class="btn btn-info" value="submit">
+                                    </div>
                                 </div>
 
                             </form>
@@ -230,8 +230,18 @@
 </div>
 <!-- END layout-wrapper -->
 
-<script>
-CKEDITOR.replace( 'descriptions' );
-</script>
+
 
 @stop
+@section('js')
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 300, //set editable area's height
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+    });
+</script>
+@endsection

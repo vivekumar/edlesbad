@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 
 use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\PagePdfController;
+use App\Http\Controllers\Admin\ProductPdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,7 +125,12 @@ Route::middleware([CheckAdminLog::class])->group(function () {
         Route::post('save', [PartnerController::class, 'save']);
         Route::get('{type}/{id}', [PartnerController::class, 'action']);
     });
-
+    Route::group(['prefix' => 'pdf'], function () {
+        Route::get('/', [PagePdfController::class, 'index']);
+        Route::get('create', [PagePdfController::class, 'create']);
+        Route::post('save', [PagePdfController::class, 'save']);
+        Route::get('{type}/{id}', [PagePdfController::class, 'action']);
+    });
     Route::group(['prefix' => 'testimonial'], function () {
         Route::get('/', [TestimonialController::class, 'index']);
         Route::get('create', [TestimonialController::class, 'create']);
@@ -171,7 +178,19 @@ Route::middleware([CheckAdminLog::class])->group(function () {
         Route::get('/productimage/status/{product}/{status}/{id}', [ProductImageController::class, 'status'])->name('productimage.status');
         Route::get('{type}/{id}', [ProductImageController::class, 'action']);
     });
+    Route::group(['prefix' => 'product-pdf'], function () {
+        Route::get('/', [ProductPdfController::class, 'index'])->name('productpdf.index');
+        Route::get('create', [ProductPdfController::class, 'create'])->name('productpdf.create');
+        Route::post('save', [ProductPdfController::class, 'save'])->name('productpdf.save');
+        //Route::get('{type}/{id}', [ProductPdfController::class, 'action']);
 
+        //Route::get('edit/{id}', [ProductPdfController::class, 'edit'])->name('productpdf.edit');
+        //Route::put('update/{id}', [ProductPdfController::class, 'update'])->name('productpdf.update');
+        //Route::delete('delete/{id}', [ProductPdfController::class, 'destroy'])->name('productpdf.destroy');
+
+        Route::get('/productpdf/status/{product}/{status}/{id}', [ProductPdfController::class, 'status'])->name('productpdf.status');
+        Route::get('{type}/{id}', [ProductPdfController::class, 'action'])->name('productpdf.action');
+    });
     Route::get('setting', [DashboardController::class, 'setting']);
     Route::post('profile-update', [DashboardController::class, 'updateProfile']);
     Route::post('save-profile-image', [DashboardController::class, 'saveProfileImage']);

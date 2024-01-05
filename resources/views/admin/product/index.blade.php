@@ -68,9 +68,9 @@
                                                         </button>
                                                         <ul class="dropdown-menu">
                                                             <li><a class="dropdown-item" href="{{url('admin/product/edit/'.$row->id)}}">Edit</a></li>
-                                                            <li><a class="dropdown-item" href="#">Add image</a></li>
+
                                                             <li><a class="dropdown-item" href="{{route('productimage.index',['product'=>$row->slug])}}">Add image</a></li>
-                                                            <li><a class="dropdown-item" href="#">Add pdf</a></li>
+                                                            <li><a class="dropdown-item" href="{{route('productpdf.index',['product'=>$row->slug])}}">Add pdf</a></li>
                                                             <li>
                                                                 <hr class="dropdown-divider">
                                                             </li>

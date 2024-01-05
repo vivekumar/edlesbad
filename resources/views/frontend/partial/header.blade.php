@@ -12,9 +12,9 @@
                         <div class="col-auto">
                             <div class="header-left-wrapper">
                                 <ul class="header-top-text d-flex flex-column flex-md-row justify-content-center">
-                                    <li class="mr-4"><i class="fa fa-envelope"></i> <a class="text-white" href="mailto: info@edles-bad.ch" class="text-white">info@edles-bad.ch</a></li>
-                                    <li class="mr-4"><i class="fa fa-phone"></i><a class="text-white" href="tel:+ 41 56 511 23 20 "> +0203 150 1284</a></li>
-                                    <li><i class="fa fa-file-pdf-o"></i><a class="text-white" href="https://www.edlesbad.ch/resources/public/lava3/media/Edlesbad-Broschuere%202018.pdf" target="_blank" download=""> Gesamtprospekt</a></li>
+                                    <li class="mr-4"><i class="fa fa-envelope"></i> <a class="text-white" href="mailto: {!!App\Helpers\Helper::getSettingData('site_email')!!}" class="text-white">{!!App\Helpers\Helper::getSettingData('site_email')!!}</a></li>
+                                    <li class="mr-4"><i class="fa fa-phone"></i><a class="text-white" href="tel:{{App\Helpers\Helper::getSettingData('header_phone')}}"> {{App\Helpers\Helper::getSettingData('header_phone')}}</a></li>
+                                    <li><i class="fa fa-file-pdf-o"></i><a class="text-white" href="{{App\Helpers\Helper::getSettingData('broschuere')}}" target="_blank" download=""> Gesamtprospekt</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-xl-2 col-lg-2 col-5 position-relative">
                         <div class="logo">
-                            <a href="/"><img src="{{ URL::asset('images/logo/logo-4.png')}}" alt="logo images"></a>
+                            <a href="{{url('/')}}"><img src="{{ URL::asset('images/logo/logo-4.png')}}" alt="logo images"></a>
                         </div>
                     </div>
                     <div class="col-xl-10 d-none d-xl-block">
@@ -76,9 +76,9 @@
                                 </li>
                                 @endforeach
 
-                                {{--<li><a href="/produkte">Produkte</a></li>
+                                {{--<li><a href="{{url('/produkte')}}">Produkte</a></li>
 
-                                <li class="drop"><a href="/inspiration">Inspirationen</a>
+                                <li class="drop"><a href="{{url('/inspiration')}}">Inspirationen</a>
                                     <ul class="dropdown">
                                         <li><a href="inspiration">Badmöbel von FALPER</a></li>
                                         <li><a href="inspiration">Badmöbel Flow by ARCA</a></li>

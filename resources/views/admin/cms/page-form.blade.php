@@ -89,7 +89,7 @@
                                             <div class="col-xxl-12 col-md-12">
                                                 <div>
                                                     <label for="descriptions" class="form-label">Content</label>
-                                                    <textarea class="form-control" name="descriptions"> {{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
+                                                    <textarea class="form-control summernote" name="descriptions"> {{ isset($page)?$page->descriptions:old('descriptions') }}</textarea>
                                                 </div>
                                                 @error('descriptions')
                                                 <span class="text-danger">{{$message}}</span>
@@ -214,6 +214,15 @@
 <!-- END layout-wrapper -->
 
 <script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 300, //set editable area's height
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+    });
+
     CKEDITOR.replace('descriptions');
 </script>
 

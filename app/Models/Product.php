@@ -20,4 +20,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class, 'product_id')->orderBy('image_ordering', 'ASC');
     }
+    public function pdfs()
+    {
+        return $this->hasMany(ProductPdf::class, 'product_id')->orderBy('pdf_ordering', 'ASC');
+    }
 }

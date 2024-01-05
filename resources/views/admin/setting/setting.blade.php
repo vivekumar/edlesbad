@@ -190,6 +190,7 @@
                                                 <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                             </div>
+
                                             <!--end col-->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
@@ -327,106 +328,124 @@
                                                             <input type="text" class="form-control" id="site_phone" name="site_phone" value="{{ isset($globalSetting)?$globalSetting['site_phone']:old('site_phone') }}">
                                                         </div>
                                                     </div>
-
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="phone" class="form-label">Header Phone Number</label>
+                                                            <input type="text" class="form-control" name="header_phone" placeholder="Enter your phone number" value="{{ isset($globalSetting)?$globalSetting['header_phone']:old('header_phone') }}">
+                                                        </div>
+                                                        @error('header_phone')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="phone" class="form-label">Header Broschuere</label>
+                                                            <input type="text" class="form-control" name="broschuere" placeholder="Enter Broschuere Url" value="{{ isset($globalSetting)?$globalSetting['broschuere']:old('broschuere') }}">
+                                                        </div>
+                                                        @error('broschuere')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                    {{--
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="facebook" class="form-label">Facebook URL</label>
                                                             <input type="text" class="form-control" id="facebook_url" name="facebook_url" value="{{ isset($globalSetting)?$globalSetting['facebook_url']:old('facebook_url') }}">
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="instagram" class="form-label">Instagram URL</label>
-                                                            <input type="text" class="form-control" id="instagram_url" name="instagram_url" value="{{ isset($globalSetting)?$globalSetting['instagram_url']:old('instagram_url') }}">
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="twitter" class="form-label">Twitter URL</label>
-                                                            <input type="text" class="form-control" id="twitter_url" name="twitter_url" value="{{ isset($globalSetting)?$globalSetting['twitter_url']:old('twitter_url') }}">
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="linkedin" class="form-label">Linkedin URL</label>
-                                                            <input type="text" class="form-control" id="linkedin_url" name="linkedin_url" value="{{ isset($globalSetting)?$globalSetting['linkedin_url']:old('linkedin_url') }}">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="linkedin" class="form-label">YouTube URL</label>
-                                                            <input type="text" class="form-control" id="youtube_url" name="youtube_url" value="{{ isset($globalSetting)?$globalSetting['youtube_url']:old('youtube_url') }}">
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <!--end col-->
-                                                    <div class="col-lg-12">
-                                                        <div class="mb-3">
-                                                            <label for="address" class="form-label">Address</label>
-                                                            <textarea class="form-control" id="site_address" name="site_address" rows="3" placeholder="Enter Address"> {{ isset($globalSetting)?$globalSetting['site_address']:old('site_address') }} </textarea>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-12">
-                                                        <div class="mb-3">
-                                                            <label for="site_map" class="form-label">Map</label>
-                                                            <textarea class="form-control" id="site_map" name="site_map" rows="3" placeholder="Enter Map"> {{ isset($globalSetting)?$globalSetting['site_map']:old('site_map') }} </textarea>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-12">
-                                                        <div class="mb-3">
-                                                            <label for="site_about" class="form-label">About</label>
-                                                            <textarea class="form-control" id="site_about" name="site_about" rows="3" placeholder="Enter About Website"> {{ isset($globalSetting)?$globalSetting['site_about']:old('site_about') }} </textarea>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
-
                                                 </div>
-                                                <!--end row-->
                                             </div>
-                                        </div>
-                                        <div id="newForm" style="display: none;">
+
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="instagram" class="form-label">Instagram URL</label>
+                                                    <input type="text" class="form-control" id="instagram_url" name="instagram_url" value="{{ isset($globalSetting)?$globalSetting['instagram_url']:old('instagram_url') }}">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="twitter" class="form-label">Twitter URL</label>
+                                                    <input type="text" class="form-control" id="twitter_url" name="twitter_url" value="{{ isset($globalSetting)?$globalSetting['twitter_url']:old('twitter_url') }}">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="linkedin" class="form-label">Linkedin URL</label>
+                                                    <input type="text" class="form-control" id="linkedin_url" name="linkedin_url" value="{{ isset($globalSetting)?$globalSetting['linkedin_url']:old('linkedin_url') }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="linkedin" class="form-label">YouTube URL</label>
+                                                    <input type="text" class="form-control" id="youtube_url" name="youtube_url" value="{{ isset($globalSetting)?$globalSetting['youtube_url']:old('youtube_url') }}">
+                                                </div>
+                                            </div>
+                                            --}}
+
+
+                                            <!--end col-->
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="address" class="form-label">Address</label>
+                                                    <textarea class="form-control" id="site_address" name="site_address" rows="3" placeholder="Enter Address"> {{ isset($globalSetting)?$globalSetting['site_address']:old('site_address') }} </textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="site_map" class="form-label">Map</label>
+                                                    <textarea class="form-control" id="site_map" name="site_map" rows="3" placeholder="Enter Map"> {{ isset($globalSetting)?$globalSetting['site_map']:old('site_map') }} </textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="site_about" class="form-label">About</label>
+                                                    <textarea class="form-control" id="site_about" name="site_about" rows="3" placeholder="Enter About Website"> {{ isset($globalSetting)?$globalSetting['site_about']:old('site_about') }} </textarea>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
 
                                         </div>
-                                        <div class="col-lg-12">
-                                            <div class="hstack gap-2">
-                                                <button type="submit" class="btn btn-success">Update</button>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                    </form>
+                                        <!--end row-->
                                 </div>
-
-
-
-                                <!--end tab-pane-->
-
-                                <!--end tab-pane-->
                             </div>
+                            <div id="newForm" style="display: none;">
+
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="hstack gap-2">
+                                    <button type="submit" class="btn btn-success">Update</button>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            </form>
                         </div>
+
+
+
+                        <!--end tab-pane-->
+
+                        <!--end tab-pane-->
                     </div>
                 </div>
-                <!--end col-->
             </div>
-            <!--end row-->
-
         </div>
-        <!-- container-fluid -->
-    </div><!-- End Page-content -->
+        <!--end col-->
+    </div>
+    <!--end row-->
 
-    @include('includes.admin.footer')
+</div>
+<!-- container-fluid -->
+</div><!-- End Page-content -->
+
+@include('includes.admin.footer')
 </div>
 
 <script>

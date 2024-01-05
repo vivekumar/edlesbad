@@ -1,7 +1,7 @@
 @extends('frontend/layout/layout')
 @section('page_title', 'Admin Dashboard')
 @section('container')
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{url('/images/bg/4.jpg')}}) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
@@ -28,7 +28,7 @@
 
                 <div class="htc__recent__product img-info">
                     <div class="htc__recent__product__inner">
-                        <img src="/images/product/info_checkout.png" width="100%" alt="">
+                        <img src="{{url('/images/product/info_checkout.png')}}" width="100%" alt="">
                     </div>
                 </div>
             </div>
