@@ -164,6 +164,37 @@
                     <div role="tabpanel" id="shipping" class="pro__single__content tab-pane fade">
                         <div class="pro__tab__content__inner">
 
+                            @if(isset($product->accesories))
+                            <div role="tabpanel" id="grid-view" class="row">
+                                @foreach($product->accesories as $accesories)
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="category">
+                                        <div class="ht__cat__thumb">
+                                            <a href="{{url($accesories->product->slug)}}">
+                                                @if($accesories->product->thumbnail)
+                                                <img src="{{asset('storage/products/'.$accesories->product->thumbnail)}}" alt="{{$product->title}}">
+                                                @else
+                                                <img src="{{asset('images/product/1.jpg')}}" alt="product images">
+                                                @endif
+                                            </a>
+                                        </div>
+
+                                        <div class="fr__product__inner">
+                                            <h4><a href="{{url($accesories->product->slug)}}">{{$accesories->product->title}} </a></h4>
+                                            <ul class="fr__pro__prize">
+                                                @if($accesories->product->sell_price && $accesories->product->price>$accesories->product->sell_price)
+                                                <li class="old__prize"><strike>CHF {{$product->price}}</strike></li>
+                                                <li>CHF {{$accesories->product->sell_price}}</li>
+                                                @else
+                                                <li>CHF {{$accesories->product->price}}</li>
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
                         </div>
                     </div>
                     <!-- End Single Content -->

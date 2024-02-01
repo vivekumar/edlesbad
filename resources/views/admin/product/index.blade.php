@@ -71,6 +71,7 @@
 
                                                             <li><a class="dropdown-item" href="{{route('productimage.index',['product'=>$row->slug])}}">Add image</a></li>
                                                             <li><a class="dropdown-item" href="{{route('productpdf.index',['product'=>$row->slug])}}">Add pdf</a></li>
+                                                            <li><a class="dropdown-item" href="{{route('productaccesories.index',['product'=>$row->slug])}}">Add Accesories</a></li>
                                                             <li>
                                                                 <hr class="dropdown-divider">
                                                             </li>

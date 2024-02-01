@@ -56,7 +56,7 @@
                                             @forelse($categories as $key=>$row)
                                             <tr row_id="{{$row->id}}" class="get_row_{{$row->id}}">
                                                 <td>{{$key+1+($categories->currentPage()-1) * ($categories->perPage())}}</td>
-                                                <td>@if($row->image)<img src="{{$row->image}}" height="50" width="auto" style="max-width:100px">@endif</td>
+                                                <td>@if($row->image)<img src="{{url($row->image)}}" height="50" width="auto" style="max-width:100px">@endif</td>
                                                 <td>{{$row->title ?? ''}}</td>
                                                 <td>@if($row->parent)
                                                     {{$row->parent->title}}

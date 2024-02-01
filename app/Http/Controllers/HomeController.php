@@ -71,7 +71,7 @@ class HomeController extends Controller
         // }
 
         $categories = Category::where(['status' => 1, 'slug' => $end_slug])->with('subcategory')->first();
-        $product = Product::where(['status' => 1, 'slug' => $end_slug])->with('gallery', 'pdfs')->first();
+        $product = Product::where(['status' => 1, 'slug' => $end_slug])->with('gallery', 'pdfs', 'accesories.product')->first();
         //array_shift($categorySlugs); //dd($slug);
 
         $page = Page::where(['status' => 1, 'slug' => $end_slug])->first();
@@ -82,7 +82,7 @@ class HomeController extends Controller
                 'meta_description' => $categories->meta_description
             ];
             if (count($categories->subcategory) > 0) {
-                return view('frontend.subcategory', compact('categories'));
+                return view('frontend.subcategory', compact('categories', 'seo'));
             } else {
                 $products = Product::where(['status' => 1, 'category_id' => $categories->id])->paginate(15);
                 return view('frontend.produkte', compact('products', 'seo'));
@@ -93,6 +93,7 @@ class HomeController extends Controller
                 'meta_keyword' => $product->meta_keyword,
                 'meta_description' => $product->meta_description
             ];
+            //dd($product);
             $latest_product = Product::where(['status' => 1])->latest()->take(4)->get();
             return view('frontend.produkte-details', compact('product', 'latest_product', 'seo'));
         } else if ($page) {

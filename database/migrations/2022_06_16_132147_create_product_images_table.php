@@ -17,6 +17,7 @@ class CreateProductImagesTable extends Migration
             $table->id();
             $table->string('image_name');
             $table->string('image');
+            $table->integer('image_ordering');
             $table->foreignId('product_id');
             $table->enum('images_status', [0, 1])->default(1);
             $table->timestamps();

@@ -23,6 +23,9 @@ use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\PagePdfController;
 use App\Http\Controllers\Admin\ProductPdfController;
+use App\Http\Controllers\Admin\ProductAccesoriesController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -191,6 +194,24 @@ Route::middleware([CheckAdminLog::class])->group(function () {
         Route::get('/productpdf/status/{product}/{status}/{id}', [ProductPdfController::class, 'status'])->name('productpdf.status');
         Route::get('{type}/{id}', [ProductPdfController::class, 'action'])->name('productpdf.action');
     });
+    Route::group(['prefix' => 'product-accesories'], function () {
+        Route::get('/', [ProductAccesoriesController::class, 'index'])->name('productaccesories.index');
+        Route::get('create', [ProductAccesoriesController::class, 'create'])->name('productaccesories.create');
+        Route::post('save', [ProductAccesoriesController::class, 'store'])->name('productaccesories.save');
+        Route::get('get-product/{id}', [ProductAccesoriesController::class, 'get_productby_cagegory'])->name('productaccesories.getproduct');
+
+        //Route::get('edit/{id}', [ProductPdfController::class, 'edit'])->name('productpdf.edit');
+        //Route::put('update/{id}', [ProductPdfController::class, 'update'])->name('productpdf.update');
+        Route::delete('delete/{id}', [ProductAccesoriesController::class, 'destroy'])->name('productpdf.destroy');
+
+        //Route::get('/product-accesories/status/{product}/{status}/{id}', [ProductAccesoriesController::class, 'status'])->name('productaccesories.status');
+        //Route::get('{type}/{id}', [ProductAccesoriesController::class, 'action'])->name('productaccesories.action');
+    });
+
+
+
+
+
     Route::get('setting', [DashboardController::class, 'setting']);
     Route::post('profile-update', [DashboardController::class, 'updateProfile']);
     Route::post('save-profile-image', [DashboardController::class, 'saveProfileImage']);
